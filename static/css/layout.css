@@ -32,7 +32,7 @@
 }
 
 .header__inner {
-  display: flex !important;
+  display: flex;
   align-items: center;
   gap: 1.5rem;
   height: 100%;
@@ -41,7 +41,7 @@
 /* Logo */
 .header__logo {
   flex-shrink: 0;
-  display: flex !important;
+  display: flex;
   align-items: center;
   gap: .75rem;
   text-decoration: none;
@@ -63,12 +63,12 @@
 /* Nav */
 .nav {
   flex: 1;
-  display: flex !important;
+  display: flex;
   justify-content: center;
 }
 
 .nav__list {
-  display: flex !important;
+  display: flex;
   align-items: center;
   gap: clamp(.5rem, 1.5vw, 1.5rem);
 }
@@ -91,7 +91,7 @@
 
 /* Header right */
 .header__actions {
-  display: flex !important;
+  display: flex;
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
@@ -106,7 +106,7 @@
 
 /* Burger */
 .header__burger {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -243,7 +243,7 @@
 }
 
 .footer__nav-list {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   gap: .5rem;
 }
@@ -261,7 +261,7 @@
 .footer__bottom {
   max-width: var(--container);
   margin-inline: auto;
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -272,12 +272,11 @@
 }
 
 /* ========================================
-/* ========================================
    Responsive — tablet & mobile
    ======================================== */
 @media (min-width: 1024px) {
   .nav {
-    display: flex !important;
+    display: flex;
   }
 
   .header__burger {
@@ -295,7 +294,7 @@
   }
 
   .header__burger {
-    display: flex !important;
+    display: flex;
   }
 
   .header__phone {

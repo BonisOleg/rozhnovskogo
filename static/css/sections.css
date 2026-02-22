@@ -73,14 +73,30 @@
   background: var(--color-bg-white);
 }
 
-.auction__intro {
-  max-width: 760px;
-  margin-inline: auto;
+.auction .section-label {
+  display: block;
   text-align: center;
-  margin-top: .5rem;
 }
 
-.auction__intro-text {
+.auction .section-title {
+  text-align: center;
+}
+
+.auction__platform {
+  max-width: 760px;
+  margin-inline: auto;
+  margin-top: .5rem;
+  text-align: center;
+}
+
+.auction__platform-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: .75rem;
+}
+
+.auction__platform-text {
   color: var(--color-text-muted);
   font-size: var(--size-md);
   line-height: 1.7;

@@ -4,11 +4,9 @@
     <span class="section-label">Що таке аукціон?</span>
     <h2 class="section-title" id="auction-title">{{ auction.title }}</h2>
 
-    <div class="auction__intro js-reveal">
-      <h3 style="font-size:1.125rem;font-weight:700;color:var(--color-primary);margin-bottom:.75rem;">
-        {{ auction.platform_title }}
-      </h3>
-      <p class="auction__intro-text">{{ auction.platform_text }}</p>
+    <div class="auction__platform js-reveal">
+      <h3 class="auction__platform-title">{{ auction.platform_title }}</h3>
+      <p class="auction__platform-text">{{ auction.platform_text }}</p>
     </div>
 
     <div class="auction__cards">

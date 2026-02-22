@@ -87,3 +87,4 @@ PROZORRO_API_URL = (
     '?mode=landsell&status=active.tendering&limit=6'
 )
 PROZORRO_CACHE_TIMEOUT = 300
+PROZORRO_API_TIMEOUT = 12

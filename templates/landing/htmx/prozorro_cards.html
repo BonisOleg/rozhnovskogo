@@ -39,8 +39,20 @@
     {% endfor %}
   {% else %}
     <div class="prozorro__fallback">
-      <p class="prozorro__fallback-title">Активні земельні аукціони</p>
-      <p>Переглядайте актуальні лоти безпосередньо на платформі Prozorro.Продажі</p>
+      <p class="prozorro__fallback-title">
+        {% if api_error %}
+          Дані тимчасово недоступні
+        {% else %}
+          Наразі немає активних лотів
+        {% endif %}
+      </p>
+      <p>
+        {% if api_error %}
+          Спробуйте оновити сторінку.
+        {% else %}
+          Переглядайте актуальні лоти безпосередньо на платформі Prozorro.Продажі
+        {% endif %}
+      </p>
       <a
         href="https://prozorro.sale/auction/?stream=landsell&status=active_tendering"
         target="_blank"

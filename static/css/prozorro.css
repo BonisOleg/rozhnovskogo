@@ -14,6 +14,13 @@
   margin-bottom: 2rem;
 }
 
+.prozorro__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .prozorro__badge {
   display: inline-flex;
   align-items: center;
@@ -26,6 +33,8 @@
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: .06em;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .prozorro__badge-dot {
@@ -161,6 +170,10 @@
 }
 
 /* Fallback / empty state */
+.prozorro__fallback-loading {
+  color: var(--color-text-muted);
+}
+
 .prozorro__fallback {
   grid-column: 1 / -1;
   text-align: center;
@@ -194,7 +207,7 @@
 }
 
 /* HTMX loading indicator */
-.prozorro__grid.htmx-request {
+#prozorro-cards.htmx-request .prozorro__grid {
   opacity: .5;
   pointer-events: none;
   transition: opacity .2s;

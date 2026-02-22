@@ -1,10 +1,14 @@
+import logging
+import time
+
 import requests
 from django.conf import settings
 from django.core.cache import cache
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
+
+logger = logging.getLogger(__name__)
 
 from .models1 import SiteSettings, HeroSection, AboutSection, AuctionSection, ServiceItem
 from .models2 import (
@@ -54,36 +58,71 @@ class LeadFormView(View):
 
 class ProzorroView(View):
     CACHE_KEY = 'prozorro_land_auctions'
+    CACHE_KEY_ERROR = 'prozorro_land_auctions_api_error'
+    RETRIES = 3
+    BACKOFF = 1.5
+    TIMEOUT = getattr(settings, 'PROZORRO_API_TIMEOUT', 12)
 
     def get(self, request):
-        auctions = cache.get(self.CACHE_KEY)
+        cached = cache.get(self.CACHE_KEY)
+        cached_error = cache.get(self.CACHE_KEY_ERROR)
 
-        if auctions is None:
-            auctions = self._fetch_auctions()
-            cache.set(self.CACHE_KEY, auctions, settings.PROZORRO_CACHE_TIMEOUT)
+        if cached is not None:
+            return render(request, 'landing/htmx/prozorro_cards.html', {
+                'auctions': cached,
+                'api_error': cached_error or False,
+            })
 
-        return render(request, 'landing/htmx/prozorro_cards.html', {'auctions': auctions})
+        auctions, api_error = self._fetch_auctions()
+        cache.set(self.CACHE_KEY, auctions, settings.PROZORRO_CACHE_TIMEOUT)
+        cache.set(self.CACHE_KEY_ERROR, api_error, settings.PROZORRO_CACHE_TIMEOUT)
+
+        return render(request, 'landing/htmx/prozorro_cards.html', {
+            'auctions': auctions,
+            'api_error': api_error,
+        })
 
     def _fetch_auctions(self):
-        try:
-            resp = requests.get(settings.PROZORRO_API_URL, timeout=8)
-            resp.raise_for_status()
-            data = resp.json()
-            items = data.get('data', [])
-            result = []
-            for item in items[:6]:
-                result.append({
-                    'id': item.get('id', ''),
-                    'title': item.get('title', 'Земельна ділянка'),
-                    'area': self._extract_area(item),
-                    'price': self._extract_price(item),
-                    'status': item.get('status', ''),
-                    'url': f"https://prozorro.sale/auction/{item.get('id', '')}",
-                    'region': self._extract_region(item),
-                })
-            return result
-        except Exception:
-            return []
+        for attempt in range(self.RETRIES):
+            try:
+                resp = requests.get(
+                    settings.PROZORRO_API_URL,
+                    timeout=self.TIMEOUT,
+                )
+                resp.raise_for_status()
+                data = resp.json()
+                items = data.get('data') or data.get('results') or data.get('items') or []
+                if not items and data.keys() - {'data', 'results', 'items'}:
+                    logger.warning(
+                        'Prozorro API response structure may have changed: keys=%s',
+                        list(data.keys()),
+                    )
+                result = []
+                for item in items[:6]:
+                    result.append({
+                        'id': item.get('id', ''),
+                        'title': item.get('title', 'Земельна ділянка'),
+                        'area': self._extract_area(item),
+                        'price': self._extract_price(item),
+                        'status': item.get('status', ''),
+                        'url': f"https://prozorro.sale/auction/{item.get('id', '')}",
+                        'region': self._extract_region(item),
+                    })
+                return result, False
+            except requests.RequestException as e:
+                logger.warning(
+                    'Prozorro API request failed (attempt %s/%s): %s: %s',
+                    attempt + 1, self.RETRIES, type(e).__name__, str(e),
+                )
+                if attempt < self.RETRIES - 1:
+                    time.sleep(self.BACKOFF * (attempt + 1))
+                else:
+                    logger.error('Prozorro API unreachable after %s attempts', self.RETRIES)
+                    return [], True
+            except (ValueError, KeyError, TypeError) as e:
+                logger.exception('Prozorro API response parse error: %s', e)
+                return [], True
+        return [], True
 
     def _extract_area(self, item):
         try:
