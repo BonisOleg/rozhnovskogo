@@ -1,0 +1,31 @@
+{% load static %}
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div>
+      {% if site.logo %}
+        <img src="{{ site.logo.url }}" alt="Центр Земельних Аукціонів" class="footer__logo-img">
+      {% else %}
+        <p style="font-weight:700;color:#fff;margin-bottom:.5rem;">Центр Земельних Аукціонів</p>
+      {% endif %}
+      <p class="footer__logo-text">Професійний супровід купівлі та продажу землі через аукціон Prozorro.Продажі.</p>
+    </div>
+
+    <nav aria-label="Навігація в футері">
+      <p class="footer__nav-title">Навігація</p>
+      <ul class="footer__nav-list" role="list">
+        <li><a href="#about" class="footer__nav-link">Про компанію</a></li>
+        <li><a href="#auction" class="footer__nav-link">Що таке аукціон?</a></li>
+        <li><a href="#services" class="footer__nav-link">Наші послуги</a></li>
+        <li><a href="#advantages" class="footer__nav-link">Переваги</a></li>
+        <li><a href="#contact" class="footer__nav-link">Контакти</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    <span>© {% now "Y" %} Центр Земельних Аукціонів. Всі права захищено.</span>
+    {% if site.phone %}
+      <a href="tel:{{ site.phone }}" class="footer__nav-link">{{ site.phone }}</a>
+    {% endif %}
+  </div>
+</footer>

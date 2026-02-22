@@ -1,0 +1,218 @@
+/* ========================================
+   Prozorro Live Auctions Section
+   ======================================== */
+.prozorro {
+  background: var(--color-bg-white);
+}
+
+.prozorro__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.prozorro__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .25rem .75rem;
+  border-radius: 100px;
+  background: rgba(197,162,103,.1);
+  border: 1px solid rgba(197,162,103,.3);
+  font-size: var(--size-xs);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: .06em;
+}
+
+.prozorro__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4caf50;
+  flex-shrink: 0;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
+.prozorro__link {
+  font-size: var(--size-sm);
+  color: var(--color-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+  transition: color var(--transition);
+}
+
+.prozorro__link:hover {
+  color: var(--color-accent);
+}
+
+/* Cards grid */
+.prozorro__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.auction-card {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.auction-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.auction-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  font-size: var(--size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #4caf50;
+}
+
+.auction-card__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.auction-card__title {
+  font-size: var(--size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.auction-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+}
+
+.auction-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.auction-card__key {
+  font-size: var(--size-xs);
+  color: var(--color-text-light);
+}
+
+.auction-card__val {
+  font-size: var(--size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.auction-card__val--price {
+  color: var(--color-primary);
+}
+
+.auction-card__footer {
+  margin-top: auto;
+  padding-top: .75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.auction-card__cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: .625rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: var(--size-xs);
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: background var(--transition);
+}
+
+.auction-card__cta:hover {
+  background: var(--color-primary-light);
+}
+
+/* Fallback / empty state */
+.prozorro__fallback {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-muted);
+}
+
+.prozorro__fallback-title {
+  font-size: var(--size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: .5rem;
+}
+
+.prozorro__fallback-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1rem;
+  padding: .75rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--size-sm);
+  transition: background var(--transition);
+}
+
+.prozorro__fallback-link:hover {
+  background: var(--color-accent-dark);
+}
+
+/* HTMX loading indicator */
+.prozorro__grid.htmx-request {
+  opacity: .5;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+
+@media (max-width: 1023px) {
+  .prozorro__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .prozorro__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prozorro__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

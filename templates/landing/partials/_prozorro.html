@@ -1,0 +1,39 @@
+{% load icons %}
+<section class="section prozorro" id="prozorro" aria-labelledby="prozorro-title">
+  <div class="container">
+    <div class="prozorro__header">
+      <div>
+        <span class="section-label">Активні торги</span>
+        <h2 class="section-title" id="prozorro-title">Земельні аукціони Prozorro</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+        <span class="prozorro__badge">
+          <span class="prozorro__badge-dot" aria-hidden="true"></span>
+          Live
+        </span>
+        <a
+          href="https://prozorro.sale/auction/?stream=landsell&status=active_tendering"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="prozorro__link"
+        >
+          Усі лоти {% icon "external" %}
+        </a>
+      </div>
+    </div>
+
+    <div
+      id="prozorro-cards"
+      hx-get="{% url 'landing:prozorro' %}"
+      hx-trigger="load, every 300s"
+      hx-target="#prozorro-cards"
+      hx-swap="innerHTML"
+    >
+      <div class="prozorro__grid">
+        <div class="prozorro__fallback">
+          <p style="color:var(--color-text-muted)">Завантажуємо лоти...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

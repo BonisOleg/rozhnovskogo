@@ -1,0 +1,132 @@
+/* ============================================
+   main.js — Mobile menu, scroll, animations
+   No conflicts with HTMX (separate concerns)
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  /* ── Mobile menu ── */
+  const burger = document.getElementById('burger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  function toggleNav(open) {
+    if (!burger || !mobileNav) return;
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  if (burger) {
+    burger.addEventListener('click', function () {
+      const isOpen = burger.getAttribute('aria-expanded') === 'true';
+      toggleNav(!isOpen);
+    });
+  }
+
+  /* Close on nav link tap */
+  document.querySelectorAll('[data-close-nav]').forEach(function (el) {
+    el.addEventListener('click', function () { toggleNav(false); });
+  });
+
+  /* Close on outside tap */
+  document.addEventListener('click', function (e) {
+    if (
+      mobileNav &&
+      mobileNav.classList.contains('open') &&
+      !mobileNav.contains(e.target) &&
+      e.target !== burger &&
+      !burger.contains(e.target)
+    ) {
+      toggleNav(false);
+    }
+  });
+
+  /* ── Header scroll shadow ── */
+  var header = document.getElementById('site-header');
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ── Active nav link on scroll (IntersectionObserver) ── */
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav__link[href^="#"]');
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (link) {
+            var href = link.getAttribute('href');
+            var active = href === '#' + entry.target.id;
+            link.classList.toggle('active', active);
+          });
+        }
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var delay = entry.target.style.getPropertyValue('--reveal-delay') || '0s';
+          entry.target.style.transitionDelay = delay;
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0 });
+
+    document.querySelectorAll('.js-reveal').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    /* Fallback: show all immediately */
+    document.querySelectorAll('.js-reveal').forEach(function (el) {
+      el.classList.add('revealed');
+    });
+  }
+
+  /* ── HTMX: re-observe reveals after swap ── */
+  document.body.addEventListener('htmx:afterSwap', function () {
+    if (!('IntersectionObserver' in window)) return;
+    document.querySelectorAll('.js-reveal:not(.revealed)').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  });
+
+  /* ── Services tabs ── */
+  var tabs = document.querySelectorAll('.services__tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var panelId = tab.getAttribute('aria-controls');
+      tabs.forEach(function (t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.services__panel').forEach(function (p) {
+        p.classList.remove('active');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ── HTMX: re-observe reveals after swap ── */
+  document.body.addEventListener('htmx:afterSwap', function () {
+    if (!('IntersectionObserver' in window)) return;
+    document.querySelectorAll('.js-reveal:not(.revealed)').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  });
+
+})();

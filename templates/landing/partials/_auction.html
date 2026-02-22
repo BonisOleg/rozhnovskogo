@@ -1,0 +1,39 @@
+{% load icons %}
+<section class="section auction" id="auction" aria-labelledby="auction-title">
+  <div class="container">
+    <span class="section-label">Що таке аукціон?</span>
+    <h2 class="section-title" id="auction-title">{{ auction.title }}</h2>
+
+    <div class="auction__intro js-reveal">
+      <h3 style="font-size:1.125rem;font-weight:700;color:var(--color-primary);margin-bottom:.75rem;">
+        {{ auction.platform_title }}
+      </h3>
+      <p class="auction__intro-text">{{ auction.platform_text }}</p>
+    </div>
+
+    <div class="auction__cards">
+      <div class="auction__card auction__card--seller js-reveal">
+        <div class="auction__card-icon auction__card-icon--gold">
+          {% icon "seller" %}
+        </div>
+        <h3 class="auction__card-title">{{ auction.seller_title }}</h3>
+        <div class="auction__card-text">{{ auction.seller_text|nl2li }}</div>
+      </div>
+
+      <div class="auction__card auction__card--buyer js-reveal" style="--reveal-delay:.1s">
+        <div class="auction__card-icon auction__card-icon--green">
+          {% icon "buyer" %}
+        </div>
+        <h3 class="auction__card-title">{{ auction.buyer_title }}</h3>
+        <div class="auction__card-text">{{ auction.buyer_text|nl2li }}</div>
+      </div>
+    </div>
+
+    {% if auction.important_note %}
+    <div class="auction__note js-reveal">
+      <span class="auction__note-icon">{% icon "warning" %}</span>
+      <p class="auction__note-text"><strong>Важливо:</strong> {{ auction.important_note }}</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,76 @@
+{% load static icons %}
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container contact__inner">
+
+    <div class="contact__info">
+      <span class="section-label" style="color:var(--color-accent-light)">Контакти</span>
+      <h2 class="contact__info-title" id="contact-title">{{ contact.title }}</h2>
+      <p class="contact__info-desc">{{ contact.description }}</p>
+
+      <div class="contact__detail-list">
+        {% if site.phone %}
+        <div class="contact__detail">
+          <div class="contact__detail-icon" aria-hidden="true">{% icon "phone" %}</div>
+          <div class="contact__detail-body">
+            <p class="contact__detail-label">Гаряча лінія</p>
+            <p class="contact__detail-value">
+              <a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+            </p>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if site.email %}
+        <div class="contact__detail">
+          <div class="contact__detail-icon" aria-hidden="true">{% icon "email" %}</div>
+          <div class="contact__detail-body">
+            <p class="contact__detail-label">Email</p>
+            <p class="contact__detail-value">
+              <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+            </p>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if site.address %}
+        <div class="contact__detail">
+          <div class="contact__detail-icon" aria-hidden="true">{% icon "location" %}</div>
+          <div class="contact__detail-body">
+            <p class="contact__detail-label">Адреса</p>
+            <p class="contact__detail-value">{{ site.address }}</p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      {% if site.telegram_url or site.viber_url or site.whatsapp_url %}
+      <div class="contact__messengers">
+        {% if site.telegram_url %}
+          <a href="{{ site.telegram_url }}" target="_blank" rel="noopener" class="contact__messenger-btn">
+            Telegram
+          </a>
+        {% endif %}
+        {% if site.viber_url %}
+          <a href="{{ site.viber_url }}" target="_blank" rel="noopener" class="contact__messenger-btn">
+            Viber
+          </a>
+        {% endif %}
+        {% if site.whatsapp_url %}
+          <a href="{{ site.whatsapp_url }}" target="_blank" rel="noopener" class="contact__messenger-btn">
+            WhatsApp
+          </a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="contact__form-wrap js-reveal">
+      <h3 class="contact__form-title">{{ contact.form_title }}</h3>
+
+      <div id="lead-form-area">
+        {% include "landing/partials/_lead_form.html" %}
+      </div>
+    </div>
+
+  </div>
+</section>

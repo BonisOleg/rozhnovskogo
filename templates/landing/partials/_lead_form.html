@@ -1,0 +1,58 @@
+{% load static %}
+<form
+  class="form"
+  hx-post="{% url 'landing:lead' %}"
+  hx-target="#lead-form-area"
+  hx-swap="innerHTML"
+  novalidate
+>
+  {% csrf_token %}
+
+  <div class="form__group">
+    <label class="form__label" for="lead-name">Ваше ім'я</label>
+    <input
+      class="form__input"
+      type="text"
+      id="lead-name"
+      name="name"
+      placeholder="Введіть ім'я"
+      required
+      autocomplete="given-name"
+    >
+  </div>
+
+  <div class="form__group">
+    <label class="form__label" for="lead-phone">Ваш телефон</label>
+    <input
+      class="form__input"
+      type="tel"
+      id="lead-phone"
+      name="phone"
+      placeholder="+380 __ ___ __ __"
+      required
+      autocomplete="tel"
+      inputmode="tel"
+    >
+  </div>
+
+  <div class="form__group">
+    <span class="form__label" id="interest-label">Що вас цікавить?</span>
+    <div class="form__radio-group" role="radiogroup" aria-labelledby="interest-label">
+      <label class="form__radio">
+        <input type="radio" name="interest" value="buy" checked> Купити землю (Я учасник)
+      </label>
+      <label class="form__radio">
+        <input type="radio" name="interest" value="sell"> Продати землю (Я власник)
+      </label>
+      <label class="form__radio">
+        <input type="radio" name="interest" value="estimate"> Оцінка ділянки
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn--gold form__submit">
+    {{ contact.form_btn_text }}
+  </button>
+
+  <p class="form__privacy">{{ contact.privacy_note }}</p>
+</form>

@@ -1,0 +1,53 @@
+<section class="section section--cream" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <span class="section-label">Послуги</span>
+    <h2 class="section-title" id="services-title">{{ services_section.title }}</h2>
+
+    <div class="services__tabs" role="tablist" aria-label="Категорії послуг">
+      <button
+        class="services__tab active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-buyers"
+        id="tab-buyers"
+        data-tab="buyers"
+      >Для покупців</button>
+      <button
+        class="services__tab"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-sellers"
+        id="tab-sellers"
+        data-tab="sellers"
+      >Для продавців</button>
+    </div>
+
+    <div class="services__panel active" id="panel-buyers" role="tabpanel" aria-labelledby="tab-buyers">
+      <div class="services__grid">
+        {% for item in service_buyers %}
+        <div class="service-card js-reveal">
+          <span class="service-card__num" aria-hidden="true">{{ forloop.counter }}</span>
+          <div class="service-card__body">
+            <h3 class="service-card__title">{{ item.title }}</h3>
+            <p class="service-card__text">{{ item.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="services__panel" id="panel-sellers" role="tabpanel" aria-labelledby="tab-sellers">
+      <div class="services__grid">
+        {% for item in service_sellers %}
+        <div class="service-card js-reveal">
+          <span class="service-card__num" aria-hidden="true">{{ forloop.counter }}</span>
+          <div class="service-card__body">
+            <h3 class="service-card__title">{{ item.title }}</h3>
+            <p class="service-card__text">{{ item.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

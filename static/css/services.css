@@ -1,0 +1,207 @@
+/* ========================================
+   Services Section
+   ======================================== */
+.services__tabs {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0;
+}
+
+.services__tab {
+  padding: .75rem 1.5rem;
+  font-size: var(--size-sm);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color var(--transition), border-color var(--transition);
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.services__tab.active,
+.services__tab:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-accent);
+}
+
+.services__panel {
+  display: none;
+}
+
+.services__panel.active {
+  display: block;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.service-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.service-card__num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(197,162,103,.12);
+  color: var(--color-accent);
+  font-size: var(--size-sm);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card__body {}
+
+.service-card__title {
+  font-size: var(--size-base);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: .375rem;
+}
+
+.service-card__text {
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ========================================
+   Steps Timeline
+   ======================================== */
+.steps {
+  background: var(--color-bg);
+}
+
+.steps__title-wrap {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.steps__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.steps__timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+}
+
+.step {
+  display: flex;
+  gap: 2rem;
+  padding: 1.75rem 1.5rem 1.75rem 0;
+  position: relative;
+}
+
+.step__dot {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-bg-white);
+  border: 3px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--size-lg);
+  font-weight: 800;
+  color: var(--color-accent);
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition);
+}
+
+.step--highlighted .step__dot {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.step__body {
+  flex: 1;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  margin-top: .25rem;
+}
+
+.step--highlighted .step__body {
+  border-color: var(--color-accent);
+  background: rgba(197,162,103,.05);
+  box-shadow: 0 0 0 2px rgba(197,162,103,.15);
+}
+
+.step__num {
+  font-size: var(--size-xs);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: .25rem;
+}
+
+.step__title {
+  font-size: var(--size-md);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: .5rem;
+}
+
+.step__text {
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps__timeline::before {
+    left: 20px;
+  }
+
+  .step__dot {
+    width: 40px;
+    height: 40px;
+    font-size: var(--size-base);
+  }
+
+  .step {
+    gap: 1rem;
+  }
+}

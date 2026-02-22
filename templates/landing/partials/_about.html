@@ -1,0 +1,22 @@
+<section class="section section--cream" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <span class="section-label">Про компанію</span>
+    <h2 class="section-title" id="about-title">{{ about.title }}</h2>
+
+    <div class="about__grid">
+      <div class="about__philosophy js-reveal">
+        <h3 class="about__philosophy-title">{{ about.philosophy_title }}</h3>
+        <div class="about__philosophy-text">{{ about.philosophy_text|linebreaksbr }}</div>
+      </div>
+
+      <div class="about__deco js-reveal" style="--reveal-delay:.15s">
+        {% for stat in stats %}
+        <div class="about__stat-pill">
+          <span class="about__stat-num">{{ stat.value }}</span>
+          <span class="about__stat-lbl">{{ stat.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

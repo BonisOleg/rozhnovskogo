@@ -1,0 +1,59 @@
+{% load static icons %}
+<header class="header" id="site-header">
+  <div class="container header__inner">
+
+    <a href="#hero" class="header__logo" aria-label="На головну">
+      {% if site.logo %}
+        <img src="{{ site.logo.url }}" alt="Центр Земельних Аукціонів" class="header__logo-img">
+      {% else %}
+        <span class="header__logo-text">Центр Земельних Аукціонів</span>
+      {% endif %}
+    </a>
+
+    <nav class="nav" aria-label="Головне меню">
+      <ul class="nav__list" role="list">
+        <li><a href="#about" class="nav__link">Про компанію</a></li>
+        <li><a href="#auction" class="nav__link">Що таке аукціон?</a></li>
+        <li><a href="#services" class="nav__link">Наші послуги</a></li>
+        <li><a href="#advantages" class="nav__link">Переваги</a></li>
+        <li><a href="#contact" class="nav__link">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      {% if site.phone %}
+        <a href="tel:{{ site.phone }}" class="header__phone">{{ site.phone }}</a>
+      {% endif %}
+      <a href="#contact" class="btn btn--gold btn--sm">{{ site.call_btn_text }}</a>
+    </div>
+
+    <button
+      class="header__burger"
+      id="burger-btn"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Відкрити меню"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+
+<nav class="nav--mobile" id="mobile-nav" aria-label="Мобільне меню" role="navigation">
+  <ul class="nav__list" role="list">
+    <li><a href="#about" class="nav__link" data-close-nav>Про компанію</a></li>
+    <li><a href="#auction" class="nav__link" data-close-nav>Що таке аукціон?</a></li>
+    <li><a href="#services" class="nav__link" data-close-nav>Наші послуги</a></li>
+    <li><a href="#advantages" class="nav__link" data-close-nav>Переваги</a></li>
+    <li><a href="#contact" class="nav__link" data-close-nav>Контакти</a></li>
+  </ul>
+  <div class="header__actions">
+    {% if site.phone %}
+      <a href="tel:{{ site.phone }}" class="header__phone" style="color:#fff">{{ site.phone }}</a>
+    {% endif %}
+    <a href="#contact" class="btn btn--gold btn--sm" data-close-nav>{{ site.call_btn_text }}</a>
+  </div>
+</nav>

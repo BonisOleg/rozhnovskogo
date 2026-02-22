@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+{% include "landing/partials/_header.html" %}
+
+<div class="page-wrap">
+  {% include "landing/partials/_hero.html" %}
+  {% include "landing/partials/_about.html" %}
+  {% include "landing/partials/_auction.html" %}
+  {% include "landing/partials/_services.html" %}
+  {% include "landing/partials/_steps.html" %}
+  {% include "landing/partials/_stats.html" %}
+  {% include "landing/partials/_advantages.html" %}
+  {% include "landing/partials/_prozorro.html" %}
+  {% include "landing/partials/_contact.html" %}
+  {% include "landing/partials/_footer.html" %}
+</div>
+{% endblock %}

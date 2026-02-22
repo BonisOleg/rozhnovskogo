@@ -1,0 +1,131 @@
+/* ========================================
+   Mobile & iOS Safari Fixes
+   ======================================== */
+
+/* Safe area insets for notch/dynamic island */
+.header {
+  padding-inline: max(var(--container-pad), env(safe-area-inset-left))
+                  max(var(--container-pad), env(safe-area-inset-right));
+}
+
+.footer {
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+}
+
+/* Fix 100vh on iOS (address bar reflow) */
+.hero {
+  min-height: 100svh;
+}
+
+@supports not (min-height: 100svh) {
+  .hero {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Prevent iOS auto-zoom on input focus (font-size >= 16px) */
+.form__input {
+  font-size: max(16px, var(--size-base));
+}
+
+/* iOS Safari scroll momentum */
+.nav--mobile {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  max-height: calc(100dvh - var(--header-h));
+}
+
+/* Tap highlight suppression */
+a,
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Tablet (768–1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --header-h: 64px;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advantages__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .prozorro__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Small mobile (< 375px) ── */
+@media (max-width: 374px) {
+  :root {
+    --container-pad: .875rem;
+  }
+
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    padding: .75rem 1.25rem;
+    font-size: .9rem;
+  }
+
+  .stats__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Landscape on small phones ── */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero__inner {
+    padding-block: 3rem 2rem;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}
+
+/* ── Focus-visible outlines for keyboard nav ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
