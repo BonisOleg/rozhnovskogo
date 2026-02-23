@@ -25,6 +25,12 @@
           <span class="auction-card__key">Стартова ціна</span>
           <span class="auction-card__val auction-card__val--price">{{ lot.price }}</span>
         </div>
+        {% if lot.auction_start %}
+        <div class="auction-card__row">
+          <span class="auction-card__key">Початок аукціону</span>
+          <span class="auction-card__val">{{ lot.auction_start }}</span>
+        </div>
+        {% endif %}
       </div>
 
       <div class="auction-card__footer">

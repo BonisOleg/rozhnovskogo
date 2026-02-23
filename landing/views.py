@@ -1,5 +1,6 @@
 import logging
 import time
+from datetime import datetime
 
 import requests
 from django.conf import settings
@@ -91,22 +92,24 @@ class ProzorroView(View):
                 )
                 resp.raise_for_status()
                 data = resp.json()
-                items = data.get('data') or data.get('results') or data.get('items') or []
-                if not items and data.keys() - {'data', 'results', 'items'}:
-                    logger.warning(
-                        'Prozorro API response structure may have changed: keys=%s',
-                        list(data.keys()),
-                    )
+                items = data if isinstance(data, list) else []
+                
+                active_items = [
+                    item for item in items 
+                    if item.get('status') == 'active_tendering'
+                ]
+                
                 result = []
-                for item in items[:6]:
+                for item in active_items[:12]:
                     result.append({
-                        'id': item.get('id', ''),
-                        'title': item.get('title', 'Земельна ділянка'),
+                        'id': item.get('auctionId', ''),
+                        'title': item.get('title', {}).get('uk_UA', 'Земельна ділянка'),
                         'area': self._extract_area(item),
                         'price': self._extract_price(item),
                         'status': item.get('status', ''),
-                        'url': f"https://prozorro.sale/auction/{item.get('id', '')}",
+                        'url': f"https://prozorro.sale/auction/{item.get('auctionId', '')}/",
                         'region': self._extract_region(item),
+                        'auction_start': self._extract_auction_start(item),
                     })
                 return result, False
             except requests.RequestException as e:
@@ -127,8 +130,12 @@ class ProzorroView(View):
     def _extract_area(self, item):
         try:
             qty = item['items'][0]['quantity']
-            unit = item['items'][0].get('unit', {}).get('name', 'га')
-            return f'{qty} {unit}'
+            unit_name = item['items'][0].get('unit', {}).get('name', {})
+            if isinstance(unit_name, dict):
+                unit_text = unit_name.get('uk_UA', 'га')
+            else:
+                unit_text = str(unit_name) if unit_name else 'га'
+            return f'{qty} {unit_text}'
         except (KeyError, IndexError, TypeError):
             return '—'
 
@@ -142,6 +149,19 @@ class ProzorroView(View):
 
     def _extract_region(self, item):
         try:
-            return item['items'][0]['deliveryAddress'].get('region', '')
+            region = item['items'][0]['address'].get('region', {})
+            if isinstance(region, dict):
+                return region.get('uk_UA', '')
+            return str(region) if region else ''
         except (KeyError, IndexError, TypeError):
+            return ''
+
+    def _extract_auction_start(self, item):
+        try:
+            start_date = item.get('auctionPeriod', {}).get('startDate', '')
+            if start_date:
+                dt = datetime.fromisoformat(start_date.replace('Z', '+00:00'))
+                return dt.strftime('%d.%m.%Y %H:%M')
+            return ''
+        except (ValueError, TypeError, AttributeError):
             return ''
