@@ -1,4 +1,4 @@
-/* ========================================
+/* =========================================
    Layout: Container, Header, Footer, Nav
    ======================================== */
 
@@ -10,7 +10,7 @@
   padding-inline: var(--container-pad);
 }
 
-/* ========================================
+/* =========================================
    Header
    ======================================== */
 .header {
@@ -45,11 +45,20 @@
   align-items: center;
   gap: .75rem;
   text-decoration: none;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 8px;
 }
 
 .header__logo-img {
   height: 44px;
   width: auto;
+}
+
+@media (min-width: 1024px) {
+  .header__logo-img {
+    height: 64px;
+  }
 }
 
 .header__logo-text {
@@ -181,7 +190,7 @@
   padding-block-start: var(--header-h);
 }
 
-/* ========================================
+/* =========================================
    Section base
    ======================================== */
 .section {
@@ -201,7 +210,7 @@
   background: var(--color-bg-white);
 }
 
-/* ========================================
+/* =========================================
    Footer
    ======================================== */
 .footer {
@@ -271,7 +280,7 @@
   color: rgba(255,255,255,.4);
 }
 
-/* ========================================
+/* =========================================
    Responsive — tablet & mobile
    ======================================== */
 @media (min-width: 1024px) {
@@ -285,6 +294,10 @@
 
   .header__phone {
     display: block;
+  }
+
+  .mobile-call-btn {
+    display: none; /* Hide FAB on desktop */
   }
 }
 
