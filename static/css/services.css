@@ -145,8 +145,8 @@
 }
 
 .step--highlighted .step__dot {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--color-bg-white);
+  color: var(--color-accent);
 }
 
 .step__body {
@@ -159,9 +159,9 @@
 }
 
 .step--highlighted .step__body {
-  border-color: var(--color-accent);
-  background: rgba(197,162,103,.05);
-  box-shadow: 0 0 0 2px rgba(197,162,103,.15);
+  background: var(--color-bg-white);
+  border-color: var(--color-border);
+  box-shadow: none;
 }
 
 .step__num {

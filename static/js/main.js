@@ -136,4 +136,54 @@
     });
   });
 
+  /* ── Hero modal ── */
+  var modalOverlay = document.getElementById('hero-modal');
+  var modalTitle = document.getElementById('modal-title');
+  var modalCloseBtn = document.getElementById('modal-close-btn');
+
+  var MODAL_TITLES = {
+    buy: 'Хочу купити землю',
+    sell: 'Хочу продати землю'
+  };
+
+  function openModal(interest) {
+    if (!modalOverlay) return;
+    if (modalTitle && MODAL_TITLES[interest]) {
+      modalTitle.textContent = MODAL_TITLES[interest];
+    }
+    var radio = modalOverlay.querySelector('input[type="radio"][value="' + interest + '"]');
+    if (radio) radio.checked = true;
+    modalOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    if (modalCloseBtn) modalCloseBtn.focus();
+  }
+
+  function closeModal() {
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-modal-interest]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openModal(btn.getAttribute('data-modal-interest'));
+    });
+  });
+
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
 })();

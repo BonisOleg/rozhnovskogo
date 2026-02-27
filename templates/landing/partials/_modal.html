@@ -1,0 +1,77 @@
+{% load static %}
+<div
+  class="modal-overlay"
+  id="hero-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <div class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-title">Залишити заявку</h2>
+      <button class="modal__close" id="modal-close-btn" aria-label="Закрити">&times;</button>
+    </div>
+
+    <div class="modal__body">
+      <div id="modal-form-area">
+        <form
+          class="form"
+          hx-post="{% url 'landing:lead' %}"
+          hx-target="#modal-form-area"
+          hx-swap="innerHTML"
+          novalidate
+        >
+          {% csrf_token %}
+
+          <div class="form__group">
+            <label class="form__label" for="modal-lead-name">Ваше ім'я</label>
+            <input
+              class="form__input"
+              type="text"
+              id="modal-lead-name"
+              name="name"
+              placeholder="Введіть ім'я"
+              required
+              autocomplete="given-name"
+            >
+          </div>
+
+          <div class="form__group">
+            <label class="form__label" for="modal-lead-phone">Ваш телефон</label>
+            <input
+              class="form__input"
+              type="tel"
+              id="modal-lead-phone"
+              name="phone"
+              placeholder="+380 __ ___ __ __"
+              required
+              autocomplete="tel"
+              inputmode="tel"
+            >
+          </div>
+
+          <div class="form__group">
+            <span class="form__label" id="modal-interest-label">Що вас цікавить?</span>
+            <div class="form__radio-group" role="radiogroup" aria-labelledby="modal-interest-label">
+              <label class="form__radio">
+                <input type="radio" name="interest" value="buy" id="modal-radio-buy" checked> Купити землю (Я учасник)
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="interest" value="sell" id="modal-radio-sell"> Продати землю (Я власник)
+              </label>
+              <label class="form__radio">
+                <input type="radio" name="interest" value="estimate"> Оцінка ділянки
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--gold form__submit">
+            {{ contact.form_btn_text }}
+          </button>
+
+          <p class="form__privacy">{{ contact.privacy_note }}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

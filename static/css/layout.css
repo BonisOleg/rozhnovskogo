@@ -211,6 +211,57 @@
 }
 
 /* =========================================
+   Parallax
+   ======================================== */
+.section.parallax-section {
+  position: relative;
+  background-color: transparent;
+  clip-path: inset(0);
+}
+
+.section.parallax-section::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/deck.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.section.parallax-section .container {
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 20px;
+  padding-block: 3rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .section.parallax-section::before {
+    background-image: url('../images/mob.webp');
+  }
+
+  .section.parallax-section .container {
+    border-radius: 14px;
+    padding-block: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section.parallax-section .container {
+    border-radius: 10px;
+    padding-block: 1.5rem;
+  }
+}
+
+/* =========================================
    Footer
    ======================================== */
 .footer {

@@ -22,8 +22,8 @@
     <p class="hero__subtitle">{{ hero.subtitle }}</p>
 
     <div class="hero__actions">
-      <a href="#contact?interest=buy" class="btn btn--gold">{{ hero.btn_buy_text }}</a>
-      <a href="#contact?interest=sell" class="btn btn--outline">{{ hero.btn_sell_text }}</a>
+      <button class="btn btn--gold" data-modal-interest="buy">{{ hero.btn_buy_text }}</button>
+      <button class="btn btn--outline" data-modal-interest="sell">{{ hero.btn_sell_text }}</button>
     </div>
 
     <div class="hero__scroll" aria-hidden="true">
