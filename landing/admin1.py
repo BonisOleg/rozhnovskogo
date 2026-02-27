@@ -5,7 +5,7 @@ from .models1 import SiteSettings, HeroSection, AboutSection, AuctionSection, Se
 
 class SingletonAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
-        return not self.__class__.model.objects.exists()
+        return not self.model.objects.exists()
 
     def has_delete_permission(self, request, obj=None):
         return False

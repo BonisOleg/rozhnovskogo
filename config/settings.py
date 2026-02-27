@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y&$$)u27p#$z-4z@p-%a2va7ue8_%(tdxf_sq8y2#qdwmve#5b')
 
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 render_external_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -99,20 +99,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
-}
 
 PROZORRO_API_URL = (
     'https://procedure.prozorro.sale/api/search/bySellingMethod/landSell-english'
