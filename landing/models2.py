@@ -94,7 +94,7 @@ class AdvantagesSection(SingletonModel):
 
 class ServicesSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='Наші Послуги',
+        max_length=120, default='Які земельні ділянки ми допомагаємо продати?',
         verbose_name='Заголовок секції'
     )
     steps_title = models.CharField(

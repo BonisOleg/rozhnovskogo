@@ -50,19 +50,19 @@ class SiteSettings(SingletonModel):
 
 class HeroSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='ЦЕНТР ЗЕМЕЛЬНИХ АУКЦІОНІВ',
+        max_length=120, default='Допоможемо швидко та вигідно продати земельну ділянку чи пай в Україні',
         verbose_name='Заголовок'
     )
     subtitle = models.TextField(
-        default='Професійний супровід купівлі та продажу землі через аукціон Prozorro.Продажі.',
+        default='Повний юридичний супровід, пошук покупців та оцінка вартості. Працюємо з усіми типами землі.',
         verbose_name='Підзаголовок'
     )
     btn_buy_text = models.CharField(
-        max_length=60, default='ХОЧУ КУПИТИ ЗЕМЛЮ',
+        max_length=60, default='Отримати безкоштовну консультацію',
         verbose_name='Кнопка «Купити»'
     )
     btn_sell_text = models.CharField(
-        max_length=60, default='ХОЧУ ПРОДАТИ ЗЕМЛЮ',
+        max_length=60, default='Дізнатися вартість моєї землі',
         verbose_name='Кнопка «Продати»'
     )
     bg_image = models.ImageField(

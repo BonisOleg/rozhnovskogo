@@ -8,23 +8,23 @@
         class="services__tab active"
         role="tab"
         aria-selected="true"
-        aria-controls="panel-buyers"
-        id="tab-buyers"
-        data-tab="buyers"
-      >Для покупців</button>
-      <button
-        class="services__tab"
-        role="tab"
-        aria-selected="false"
         aria-controls="panel-sellers"
         id="tab-sellers"
         data-tab="sellers"
       >Для продавців</button>
+      <button
+        class="services__tab"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-buyers"
+        id="tab-buyers"
+        data-tab="buyers"
+      >Для покупців</button>
     </div>
 
-    <div class="services__panel active" id="panel-buyers" role="tabpanel" aria-labelledby="tab-buyers">
+    <div class="services__panel active" id="panel-sellers" role="tabpanel" aria-labelledby="tab-sellers">
       <div class="services__grid">
-        {% for item in service_buyers %}
+        {% for item in service_sellers %}
         <div class="service-card js-reveal">
           <span class="service-card__num" aria-hidden="true">{{ forloop.counter }}</span>
           <div class="service-card__body">
@@ -36,9 +36,9 @@
       </div>
     </div>
 
-    <div class="services__panel" id="panel-sellers" role="tabpanel" aria-labelledby="tab-sellers">
+    <div class="services__panel" id="panel-buyers" role="tabpanel" aria-labelledby="tab-buyers">
       <div class="services__grid">
-        {% for item in service_sellers %}
+        {% for item in service_buyers %}
         <div class="service-card js-reveal">
           <span class="service-card__num" aria-hidden="true">{{ forloop.counter }}</span>
           <div class="service-card__body">

@@ -94,14 +94,6 @@
     });
   }
 
-  /* ── HTMX: re-observe reveals after swap ── */
-  document.body.addEventListener('htmx:afterSwap', function () {
-    if (!('IntersectionObserver' in window)) return;
-    document.querySelectorAll('.js-reveal:not(.revealed)').forEach(function (el) {
-      revealObserver.observe(el);
-    });
-  });
-
   /* ── Services tabs ── */
   var tabs = document.querySelectorAll('.services__tab');
   tabs.forEach(function (tab) {
@@ -118,6 +110,21 @@
       tab.setAttribute('aria-selected', 'true');
       var panel = document.getElementById(panelId);
       if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ── FAQ: exclusive accordion via <details> ── */
+  var faqItems = document.querySelectorAll('details.faq__item');
+  faqItems.forEach(function (det) {
+    var summary = det.querySelector('summary');
+    if (!summary) return;
+    summary.addEventListener('click', function (e) {
+      /* Close all siblings first, then let browser toggle the clicked one */
+      faqItems.forEach(function (other) {
+        if (other !== det && other.open) {
+          other.removeAttribute('open');
+        }
+      });
     });
   });
 
