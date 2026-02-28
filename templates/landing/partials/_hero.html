@@ -1,14 +1,6 @@
 {% load static %}
 <section class="hero" id="hero" aria-label="{{ hero.title }}">
-  <div
-    class="hero__bg"
-    {% if hero.bg_image %}
-      style="background-image: url('{{ hero.bg_image.url }}'); --overlay-opacity: {{ hero.overlay_opacity }};"
-    {% else %}
-      style="--overlay-opacity: 0.65;"
-    {% endif %}
-    aria-hidden="true"
-  ></div>
+  <div class="hero__bg" aria-hidden="true"></div>
 
   <div class="hero__inner">
     <div class="hero__badge" aria-hidden="true">
@@ -17,13 +9,15 @@
       <span>Офіційний партнер</span>
     </div>
 
+    <img src="{% static 'images/logoMini.webp' %}" alt="Центр Підготовки Аукціонів" class="hero__logo-mini">
+
     <h1 class="hero__title">{{ hero.title }}</h1>
 
     <p class="hero__subtitle">{{ hero.subtitle }}</p>
 
     <div class="hero__actions">
       <button class="btn btn--gold" data-modal-interest="buy">{{ hero.btn_buy_text }}</button>
-      <button class="btn btn--outline" data-modal-interest="sell">{{ hero.btn_sell_text }}</button>
+      <button class="btn btn--gold" data-modal-interest="sell">{{ hero.btn_sell_text }}</button>
     </div>
 
     <div class="hero__scroll" aria-hidden="true">

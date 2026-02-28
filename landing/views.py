@@ -100,7 +100,7 @@ class ProzorroView(View):
                 ]
                 
                 result = []
-                for item in active_items[:12]:
+                for item in active_items[:6]:
                     result.append({
                         'id': item.get('auctionId', ''),
                         'title': item.get('title', {}).get('uk_UA', 'Земельна ділянка'),

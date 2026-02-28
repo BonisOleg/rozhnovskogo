@@ -51,13 +51,13 @@
 }
 
 .header__logo-img {
-  height: 44px;
+  height: 56px;
   width: auto;
 }
 
 @media (min-width: 1024px) {
   .header__logo-img {
-    height: 64px;
+    height: 80px;
   }
 }
 
@@ -282,7 +282,7 @@
 }
 
 .footer__logo-img {
-  height: 40px;
+  height: 70px;
   margin-bottom: .75rem;
 }
 
