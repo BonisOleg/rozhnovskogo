@@ -23,9 +23,9 @@ class Command(BaseCommand):
 
     def _seed_site(self):
         obj = SiteSettings.load()
-        obj.phone = '+380 00 000 00 00'
-        obj.email = 'info@land-auction.com.ua'
-        obj.address = 'м. Київ, вул. Хрещатик, 1'
+        obj.phone = '063 252 8901'
+        obj.email = 'tsr.tsr0110@gmail.com'
+        obj.address = 'м. Київ вулиця Анни Ахматової 7/15 офіс 1'
         obj.call_btn_text = 'Замовити дзвінок'
         obj.save()
 
