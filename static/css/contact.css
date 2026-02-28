@@ -66,6 +66,7 @@
   font-size: var(--size-base);
   font-weight: 600;
   color: #fff;
+  word-break: break-word;
 }
 
 .contact__detail-value a:hover {

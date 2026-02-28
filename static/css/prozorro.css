@@ -139,6 +139,7 @@
   font-size: var(--size-sm);
   font-weight: 700;
   color: var(--color-text);
+  word-break: break-word;
 }
 
 .auction-card__val--price {
