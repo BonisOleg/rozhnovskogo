@@ -282,8 +282,10 @@
 }
 
 .footer__logo-img {
-  height: 90px;
+  height: 70px;
+  width: auto;
   margin-bottom: .75rem;
+  display: block;
 }
 
 .footer__logo-text {
