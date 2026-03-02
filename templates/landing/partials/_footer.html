@@ -23,7 +23,14 @@
   </div>
 
   <div class="footer__bottom">
-    <span>© {% now "Y" %}. Всі права захищено.</span>
+    <div class="footer__copyright">
+      <p class="footer__copyright-text">
+        &copy; {% now "Y" %} Центр Земельних Аукціонів. Всі права захищені.
+      </p>
+      <p class="footer__credit">
+        Розробка сайту <a href="https://www.prometeylabs.com/" class="footer__credit-link" target="_blank" rel="noopener noreferrer" aria-label="PrometeyLabs - сайт розробника">PrometeyLabs</a>
+      </p>
+    </div>
     {% if site.phone %}
       <a href="tel:{{ site.phone }}" class="footer__nav-link">{{ site.phone }}</a>
     {% endif %}
