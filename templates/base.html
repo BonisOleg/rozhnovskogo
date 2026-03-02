@@ -6,8 +6,11 @@
   <meta name="theme-color" content="#1E4332">
   <title>{% block title %}Центр Земельних Аукціонів{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}Професійний супровід купівлі та продажу землі через аукціон Prozorro.Продажі.{% endblock %}">
-
+  
   {% load static %}
+  <link rel="icon" type="image/webp" href="{% static 'images/logo.webp' %}">
+  <link rel="apple-touch-icon" href="{% static 'images/logo.webp' %}">
+
   <link rel="preload" as="image" href="{% static 'images/deck.webp' %}" fetchpriority="high" media="(min-width: 769px)">
   <link rel="preload" as="image" href="{% static 'images/mob.webp' %}" fetchpriority="high" media="(max-width: 768px)">
   <link rel="preload" as="style" href="{% static 'css/base.css' %}">
