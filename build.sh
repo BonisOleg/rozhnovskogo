@@ -9,4 +9,6 @@ chmod +x start.sh
 
 python3 manage.py collectstatic --no-input
 python3 manage.py migrate
-python3 manage.py seed
+
+# Note: Run 'python3 manage.py seed' manually via SSH or Render Shell for initial data population.
+# Do not run it automatically here to avoid resetting data on every deploy.
