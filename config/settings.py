@@ -108,10 +108,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-PROZORRO_API_URL = (
-    'https://procedure.prozorro.sale/api/search/bySellingMethod/landSell-english'
-    '?limit=12'
-)
-PROZORRO_CACHE_TIMEOUT = 300
-PROZORRO_API_TIMEOUT = 12
