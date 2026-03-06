@@ -68,18 +68,17 @@ class AdvantageItem(models.Model):
 class AdvantagesSection(SingletonModel):
     title = models.CharField(
         max_length=120,
-        default='Чому обирають «Центр Земельних Аукціонів»?',
+        default='Чому обирають ПП «Укркотлобуд»?',
         verbose_name='Заголовок секції'
     )
     subtitle = models.CharField(
         max_length=200,
-        default='Ми знаємо ціну кожного гектара та кожної хвилини вашого часу.',
+        default='Ми гарантуємо надійність нашого обладнання та високу якість виконання робіт.',
         verbose_name='Підзаголовок'
     )
     footer_quote = models.TextField(
         default=(
-            'Ми працюємо на ваш результат, бо розуміємо: '
-            'успішний аукціон — це початок вашого прибутку.'
+            'Ціни від виробника та повний спектр послуг — від проектування до монтажу по всій Україні.'
         ),
         verbose_name='Цитата внизу блоку'
     )
@@ -94,12 +93,12 @@ class AdvantagesSection(SingletonModel):
 
 class ServicesSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='Які земельні ділянки ми допомагаємо продати?',
+        max_length=120, default='Наша продукція',
         verbose_name='Заголовок секції'
     )
     steps_title = models.CharField(
         max_length=160,
-        default='Як ми працюємо: 5 кроків до успішної угоди',
+        default='Як ми працюємо: від замовлення до запуску',
         verbose_name='Заголовок блоку кроків'
     )
 
@@ -114,26 +113,26 @@ class ServicesSection(SingletonModel):
 class ContactSection(SingletonModel):
     title = models.CharField(
         max_length=120,
-        default='Почніть свій шлях до успішної угоди вже сьогодні',
+        default='Маєте запитання? Зв\'яжіться з нами!',
         verbose_name='Заголовок'
     )
     description = models.TextField(
-        default='Ми завжди на зв\'язку, щоб обговорити вашу майбутню ділянку.',
+        default='Наші фахівці допоможуть підібрати обладнання, розрахувати вартість та нададуть професійну консультацію.',
         verbose_name='Опис'
     )
     form_title = models.CharField(
         max_length=120,
-        default='Залишити заявку на безкоштовний аналіз',
+        default='Залишити заявку на розрахунок',
         verbose_name='Заголовок форми'
     )
     form_btn_text = models.CharField(
         max_length=80,
-        default='ОТРИМАТИ КОНСУЛЬТАЦІЮ ЕКСПЕРТА',
+        default='ОТРИМАТИ ПРОПОЗИЦІЮ',
         verbose_name='Текст кнопки форми'
     )
     privacy_note = models.CharField(
         max_length=200,
-        default='Ваші дані в безпеці. Ми гарантуємо повну конфіденційність кожного звернення.',
+        default='Ми гарантуємо конфіденційність вашого звернення та оперативну відповідь.',
         verbose_name='Приміт. конфіденційності'
     )
 

@@ -50,19 +50,19 @@ class SiteSettings(SingletonModel):
 
 class HeroSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='Допоможемо швидко та вигідно продати земельну ділянку чи пай в Україні',
+        max_length=120, default='ПП «УКРКОТЛОБУД» — ВАШ НАДІЙНИЙ ПАРТНЕР У СФЕРІ ОПАЛЕННЯ',
         verbose_name='Заголовок'
     )
     subtitle = models.TextField(
-        default='Повний юридичний супровід, пошук покупців та оцінка вартості. Працюємо з усіми типами землі.',
+        default='Виробництво промислових котлів, водонапірних башт Рожновського та металоконструкцій будь-якої складності. Якість, перевірена часом.',
         verbose_name='Підзаголовок'
     )
     btn_buy_text = models.CharField(
-        max_length=60, default='Отримати безкоштовну консультацію',
+        max_length=60, default='КАТАЛОГ ПРОДУКЦІЇ',
         verbose_name='Кнопка «Купити»'
     )
     btn_sell_text = models.CharField(
-        max_length=60, default='Дізнатися вартість моєї землі',
+        max_length=60, default='ОТРИМАТИ КОНСУЛЬТАЦІЮ',
         verbose_name='Кнопка «Продати»'
     )
     bg_image = models.ImageField(
@@ -84,12 +84,12 @@ class HeroSection(SingletonModel):
 
 class AboutSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='Про компанію',
+        max_length=120, default='Про підприємство',
         verbose_name='Заголовок секції'
     )
     philosophy_title = models.CharField(
         max_length=160,
-        default='Наша філософія: Справедлива ціна народжується в конкуренції',
+        default='Надійність, якість та індивідуальний підхід',
         verbose_name='Заголовок філософії'
     )
     philosophy_text = models.TextField(
@@ -106,21 +106,21 @@ class AboutSection(SingletonModel):
 
 class AuctionSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='Що таке аукціон?',
+        max_length=120, default='Наші можливості',
         verbose_name='Заголовок секції'
     )
     platform_title = models.CharField(
-        max_length=120, default='Що таке Prozorro.Продажі?',
+        max_length=120, default='Сертифіковане виробництво',
         verbose_name='Заголовок платформи'
     )
     platform_text = models.TextField(verbose_name='Опис платформи')
     seller_title = models.CharField(
-        max_length=80, default='Для власника (Продавця)',
+        max_length=80, default='Для промислових об\'єктів',
         verbose_name='Заголовок блоку продавця'
     )
     seller_text = models.TextField(verbose_name='Текст для продавця')
     buyer_title = models.CharField(
-        max_length=80, default='Для фермера (Покупця)',
+        max_length=80, default='Для громад та агросектору',
         verbose_name='Заголовок блоку покупця'
     )
     buyer_text = models.TextField(verbose_name='Текст для покупця')

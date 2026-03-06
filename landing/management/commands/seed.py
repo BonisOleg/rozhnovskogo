@@ -75,7 +75,7 @@ class Command(BaseCommand):
         obj.save()
 
     def _seed_services(self):
-        ServicesSection.objects.get_or_create(pk=1, defaults={
+        ServicesSection.objects.update_or_create(pk=1, defaults={
             'title': 'Наша продукція',
             'steps_title': 'Як ми працюємо: від замовлення до запуску',
         })
