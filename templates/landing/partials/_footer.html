@@ -3,21 +3,21 @@
   <div class="footer__inner">
     <div>
       {% if site.logo %}
-        <img src="{{ site.logo.url }}" alt="Центр Земельних Аукціонів" class="footer__logo-img" width="210" height="196">
+        <img src="{{ site.logo.url }}" alt="Логотип" class="footer__logo-img" width="210" height="196">
       {% else %}
-        <img src="{% static 'images/logo.webp' %}" alt="Центр Земельних Аукціонів" class="footer__logo-img" width="210" height="196">
+        <div class="footer__logo-placeholder">ЛОГОТИП</div>
       {% endif %}
-      <p class="footer__logo-text">Професійний супровід купівлі та продажу землі через аукціон Prozorro.Продажі.</p>
+      <p class="footer__logo-text">{{ t.footer_text }}</p>
     </div>
 
-    <nav aria-label="Навігація в футері">
-      <p class="footer__nav-title">Навігація</p>
+    <nav aria-label="{{ t.footer_nav_title }}">
+      <p class="footer__nav-title">{{ t.footer_nav_title }}</p>
       <ul class="footer__nav-list" role="list">
-        <li><a href="#about" class="footer__nav-link">Про компанію</a></li>
-        <li><a href="#auction" class="footer__nav-link">Що таке аукціон?</a></li>
-        <li><a href="#services" class="footer__nav-link">Наші послуги</a></li>
-        <li><a href="#advantages" class="footer__nav-link">Переваги</a></li>
-        <li><a href="#contact" class="footer__nav-link">Контакти</a></li>
+        <li><a href="#about" class="footer__nav-link">{{ t.nav_about }}</a></li>
+        <li><a href="#auction" class="footer__nav-link">{{ t.nav_auction }}</a></li>
+        <li><a href="#services" class="footer__nav-link">{{ t.nav_services }}</a></li>
+        <li><a href="#advantages" class="footer__nav-link">{{ t.nav_advantages }}</a></li>
+        <li><a href="#contact" class="footer__nav-link">{{ t.nav_contact }}</a></li>
       </ul>
     </nav>
   </div>
@@ -25,10 +25,10 @@
   <div class="footer__bottom">
     <div class="footer__copyright">
       <p class="footer__copyright-text">
-        &copy; {% now "Y" %} Центр Земельних Аукціонів. Всі права захищені.
+        &copy; {% now "Y" %} ПП «Укркотлобуд». {% if lang == 'ru' %}Все права защищены.{% else %}Всі права захищені.{% endif %}
       </p>
       <p class="footer__credit">
-        Розробка сайту <a href="https://www.prometeylabs.com/" class="footer__credit-link" target="_blank" rel="noopener noreferrer" aria-label="PrometeyLabs - сайт розробника">PrometeyLabs</a>
+        {{ t.footer_credit }} <a href="#" class="footer__credit-link">Ваша студія</a>
       </p>
     </div>
     {% if site.phone %}

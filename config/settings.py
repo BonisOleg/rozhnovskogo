@@ -8,14 +8,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y&$$)u27p#$z-4z@p-%a2
 
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.auction-center.com.ua']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.vezhi-rozhnovskogo.com.ua', 'vezhi-rozhnovskogo.com.ua']
 render_external_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if render_external_hostname:
     ALLOWED_HOSTS.append(render_external_hostname)
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
-    'https://*.auction-center.com.ua',
+    'https://*.vezhi-rozhnovskogo.com.ua',
+    'https://vezhi-rozhnovskogo.com.ua',
 ]
 if render_external_hostname:
     CSRF_TRUSTED_ORIGINS.append(f'https://{render_external_hostname}')

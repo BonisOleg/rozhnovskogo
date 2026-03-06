@@ -19,10 +19,10 @@
   inset-inline: 0;
   z-index: 100;
   height: var(--header-h);
-  background: rgba(30, 67, 50, 0.97);
+  background: rgba(0, 31, 63, 0.97);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(197,162,103,.2);
+  border-bottom: 1px solid rgba(0, 123, 255, 0.2);
   transition: box-shadow var(--transition);
   padding-top: env(safe-area-inset-top);
 }
@@ -36,6 +36,7 @@
   align-items: center;
   gap: 1.5rem;
   height: 100%;
+  position: relative;
 }
 
 /* Logo */
@@ -59,14 +60,6 @@
   .header__logo-img {
     height: 80px;
   }
-}
-
-.header__logo-text {
-  font-size: var(--size-sm);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  max-width: 160px;
 }
 
 /* Nav */
@@ -157,8 +150,11 @@
   inset-inline: 0;
   background: var(--color-primary-dark);
   padding: 1.5rem var(--container-pad);
-  border-bottom: 1px solid rgba(197,162,103,.2);
+  border-bottom: 1px solid rgba(0, 123, 255, 0.2);
   z-index: 99;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  max-height: calc(100dvh - var(--header-h));
 }
 
 .nav--mobile.open {
@@ -213,20 +209,20 @@
 /* =========================================
    Parallax
    ======================================== */
-.section.parallax-section {
+.parallax-section {
   position: relative;
   background-color: transparent;
   clip-path: inset(0);
 }
 
-.section.parallax-section::before {
+.parallax-section::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('../images/deck.webp');
+  background-image: url('../images/desk.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -235,8 +231,8 @@
   pointer-events: none;
 }
 
-.section.parallax-section .container {
-  background: rgba(255, 255, 255, 0.88);
+.parallax-section .container {
+  background: rgba(255, 255, 255, 0.17);
   border-radius: 20px;
   padding-block: 3rem;
   backdrop-filter: blur(8px);
@@ -244,18 +240,69 @@
 }
 
 @media (max-width: 768px) {
-  .section.parallax-section::before {
+  .parallax-section::before {
     background-image: url('../images/mob.webp');
   }
 
-  .section.parallax-section .container {
+  .parallax-section .container {
     border-radius: 14px;
     padding-block: 2rem;
   }
 }
 
 @media (max-width: 480px) {
-  .section.parallax-section .container {
+  .parallax-section .container {
+    border-radius: 10px;
+    padding-block: 1.5rem;
+  }
+}
+
+/* =========================================
+   Parallax Alt (for About & Services)
+   ======================================== */
+.parallax-section-alt {
+  position: relative;
+  background-color: transparent;
+  clip-path: inset(0);
+}
+
+.parallax-section-alt::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../images/prodesk.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.parallax-section-alt .container {
+  background: rgba(255, 255, 255, 0.17);
+  border-radius: 20px;
+  padding-block: 3rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .parallax-section-alt::before {
+    background-image: url('../images/promob.webp');
+  }
+
+  .parallax-section-alt .container {
+    border-radius: 14px;
+    padding-block: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .parallax-section-alt .container {
     border-radius: 10px;
     padding-block: 1.5rem;
   }
@@ -269,6 +316,7 @@
   color: rgba(255,255,255,.7);
   padding-block: 2.5rem 1.5rem;
   padding-inline: var(--container-pad);
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
 }
 
 .footer__inner {
@@ -366,13 +414,7 @@
   text-decoration: underline;
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .footer__credit-link:hover {
-    color: var(--color-accent-light);
-    text-decoration: underline;
-  }
+  border-radius: var(--radius-sm);
 }
 
 /* =========================================
@@ -392,7 +434,7 @@
   }
 
   .mobile-call-btn {
-    display: none; /* Hide FAB on desktop */
+    display: none;
   }
 }
 
@@ -401,16 +443,35 @@
     display: none;
   }
 
+  .header {
+    padding-inline: max(var(--container-pad), env(safe-area-inset-left))
+                    max(var(--container-pad), env(safe-area-inset-right));
+  }
+
   .header__burger {
     display: flex;
+    order: 1;
+    z-index: 10;
+  }
+
+  .header__logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 5;
+  }
+
+  .header__actions {
+    order: 3;
+    z-index: 10;
   }
 
   .header__phone {
     display: none;
   }
-}
 
-@media (max-width: 767px) {
   .footer__inner {
     grid-template-columns: 1fr;
   }
@@ -423,5 +484,24 @@
 
   .footer__copyright {
     justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-call-btn {
+    display: flex;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    -webkit-tap-highlight-color: transparent;
   }
 }

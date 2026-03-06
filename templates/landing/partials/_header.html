@@ -7,28 +7,28 @@
         id="burger-btn"
         aria-expanded="false"
         aria-controls="mobile-nav"
-        aria-label="Відкрити меню"
+        aria-label="{{ t.burger_label }}"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <a href="#hero" class="header__logo" aria-label="На головну">
+      <a href="#hero" class="header__logo" aria-label="{{ t.logo_label }}">
         {% if site.logo %}
-          <img src="{{ site.logo.url }}" alt="Центр Земельних Аукціонів" class="header__logo-img" width="210" height="196">
+          <img src="{{ site.logo.url }}" alt="Логотип" class="header__logo-img" width="210" height="196">
         {% else %}
-          <img src="{% static 'images/logo.webp' %}" alt="Центр Земельних Аукціонів" class="header__logo-img" width="210" height="196">
+          <div class="header__logo-placeholder">ЛОГОТИП</div>
         {% endif %}
       </a>
 
-      <nav class="nav" aria-label="Головне меню">
+      <nav class="nav" aria-label="{{ t.nav_about }}">
         <ul class="nav__list" role="list">
-          <li><a href="#about" class="nav__link">Про компанію</a></li>
-          <li><a href="#auction" class="nav__link">Що таке аукціон?</a></li>
-          <li><a href="#services" class="nav__link">Наші послуги</a></li>
-          <li><a href="#advantages" class="nav__link">Переваги</a></li>
-          <li><a href="#contact" class="nav__link">Контакти</a></li>
+          <li><a href="#about" class="nav__link">{{ t.nav_about }}</a></li>
+          <li><a href="#auction" class="nav__link">{{ t.nav_auction }}</a></li>
+          <li><a href="#services" class="nav__link">{{ t.nav_services }}</a></li>
+          <li><a href="#advantages" class="nav__link">{{ t.nav_advantages }}</a></li>
+          <li><a href="#contact" class="nav__link">{{ t.nav_contact }}</a></li>
         </ul>
       </nav>
 
@@ -41,13 +41,13 @@
   </div>
 </header>
 
-<nav class="nav--mobile" id="mobile-nav" aria-label="Мобільне меню" role="navigation">
+<nav class="nav--mobile" id="mobile-nav" aria-label="{{ t.nav_about }}" role="navigation">
   <ul class="nav__list" role="list">
-    <li><a href="#about" class="nav__link" data-close-nav>Про компанію</a></li>
-    <li><a href="#auction" class="nav__link" data-close-nav>Що таке аукціон?</a></li>
-    <li><a href="#services" class="nav__link" data-close-nav>Наші послуги</a></li>
-    <li><a href="#advantages" class="nav__link" data-close-nav>Переваги</a></li>
-    <li><a href="#contact" class="nav__link" data-close-nav>Контакти</a></li>
+    <li><a href="#about" class="nav__link" data-close-nav>{{ t.nav_about }}</a></li>
+    <li><a href="#auction" class="nav__link" data-close-nav>{{ t.nav_auction }}</a></li>
+    <li><a href="#services" class="nav__link" data-close-nav>{{ t.nav_services }}</a></li>
+    <li><a href="#advantages" class="nav__link" data-close-nav>{{ t.nav_advantages }}</a></li>
+    <li><a href="#contact" class="nav__link" data-close-nav>{{ t.nav_contact }}</a></li>
   </ul>
   <div class="nav--mobile__actions">
     {% if site.phone %}
@@ -57,7 +57,7 @@
 </nav>
 
 {% if site.phone %}
-  <a href="tel:{{ site.phone }}" class="mobile-call-btn" aria-label="Замовити дзвінок">
+  <a href="tel:{{ site.phone }}" class="mobile-call-btn" aria-label="{{ t.contact_hotline }}">
     {% icon 'phone' %}
   </a>
 {% endif %}

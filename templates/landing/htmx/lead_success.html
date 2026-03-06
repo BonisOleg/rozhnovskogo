@@ -3,9 +3,17 @@
   <div class="form__success-icon" aria-hidden="true">
     {% icon "check" %}
   </div>
-  <h3 class="form__success-title">Заявку отримано!</h3>
-  <p class="form__success-text">
-    Наш експерт зв'яжеться з вами найближчим часом.<br>
-    Дякуємо за звернення до Центру Земельних Аукціонів.
-  </p>
+  {% if lang == 'ru' %}
+    <h3 class="form__success-title">Заявка получена!</h3>
+    <p class="form__success-text">
+      Наш эксперт свяжется с вами в ближайшее время.<br>
+      Спасибо за обращение к ПП «Укркотлобуд».
+    </p>
+  {% else %}
+    <h3 class="form__success-title">Заявку отримано!</h3>
+    <p class="form__success-text">
+      Наш експерт зв'яжеться з вами найближчим часом.<br>
+      Дякуємо за звернення до ПП «Укркотлобуд».
+    </p>
+  {% endif %}
 </div>

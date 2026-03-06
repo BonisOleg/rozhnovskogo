@@ -138,8 +138,8 @@ class AuctionSection(SingletonModel):
 
 class ServiceItem(models.Model):
     CATEGORY_CHOICES = [
-        ('buyer', 'Для покупців'),
-        ('seller', 'Для продавців'),
+        ('buyer', 'Основна продукція'),
+        ('seller', 'Додаткові послуги'),
     ]
     category = models.CharField(
         max_length=10, choices=CATEGORY_CHOICES,

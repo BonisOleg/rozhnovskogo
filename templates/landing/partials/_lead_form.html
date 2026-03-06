@@ -7,22 +7,23 @@
   novalidate
 >
   {% csrf_token %}
+  <input type="hidden" name="lang" value="{{ lang|default:'uk' }}">
 
   <div class="form__group">
-    <label class="form__label" for="lead-name">Ваше ім'я</label>
+    <label class="form__label" for="lead-name">{{ t.form_name_label }}</label>
     <input
       class="form__input"
       type="text"
       id="lead-name"
       name="name"
-      placeholder="Введіть ім'я"
+      placeholder="{{ t.form_name_placeholder }}"
       required
       autocomplete="given-name"
     >
   </div>
 
   <div class="form__group">
-    <label class="form__label" for="lead-phone">Ваш телефон</label>
+    <label class="form__label" for="lead-phone">{{ t.form_phone_label }}</label>
     <input
       class="form__input"
       type="tel"
@@ -36,16 +37,16 @@
   </div>
 
   <div class="form__group">
-    <span class="form__label" id="interest-label">Що вас цікавить?</span>
+    <span class="form__label" id="interest-label">{{ t.form_interest_label }}</span>
     <div class="form__radio-group" role="radiogroup" aria-labelledby="interest-label">
       <label class="form__radio">
-        <input type="radio" name="interest" value="buy" checked> Купити землю (Я учасник)
+        <input type="radio" name="interest" value="buy" checked> {{ t.form_interest_towers }}
       </label>
       <label class="form__radio">
-        <input type="radio" name="interest" value="sell"> Продати землю (Я власник)
+        <input type="radio" name="interest" value="sell"> {{ t.form_interest_boilers }}
       </label>
       <label class="form__radio">
-        <input type="radio" name="interest" value="estimate"> Оцінка ділянки
+        <input type="radio" name="interest" value="estimate"> {{ t.form_interest_metal }}
       </label>
     </div>
   </div>

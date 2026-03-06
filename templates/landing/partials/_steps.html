@@ -1,7 +1,7 @@
 <section class="section steps parallax-section" id="steps" aria-labelledby="steps-title">
   <div class="container">
     <div class="steps__title-wrap">
-      <span class="section-label">Як ми працюємо</span>
+      <span class="section-label">{{ t.section_steps }}</span>
       <h2 class="section-title" id="steps-title">{{ services_section.steps_title }}</h2>
     </div>
 
@@ -10,7 +10,7 @@
       <div class="step{% if step.is_highlighted %} step--highlighted{% endif %} js-reveal" role="listitem">
         <div class="step__dot" aria-hidden="true">{{ step.number }}</div>
         <div class="step__body">
-          <p class="step__num">Крок {{ step.number }}</p>
+          <p class="step__num">{{ t.step_prefix }} {{ step.number }}</p>
           <h3 class="step__title">{{ step.title }}</h3>
           <p class="step__text">{{ step.description }}</p>
         </div>

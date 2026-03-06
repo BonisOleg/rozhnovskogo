@@ -147,9 +147,9 @@ class ContactSection(SingletonModel):
 
 class LeadSubmission(models.Model):
     INTEREST_CHOICES = [
-        ('buy', 'Купити землю'),
-        ('sell', 'Продати землю'),
-        ('estimate', 'Оцінка ділянки'),
+        ('buy', 'Водонапірні башти'),
+        ('sell', 'Котли та опалення'),
+        ('estimate', 'Металоконструкції'),
     ]
     name = models.CharField(max_length=120, verbose_name="Ім'я")
     phone = models.CharField(max_length=20, verbose_name='Телефон')

@@ -8,8 +8,8 @@
 >
   <div class="modal">
     <div class="modal__header">
-      <h2 class="modal__title" id="modal-title">Залишити заявку</h2>
-      <button class="modal__close" id="modal-close-btn" aria-label="Закрити">&times;</button>
+      <h2 class="modal__title" id="modal-title">{{ t.modal_title }}</h2>
+      <button class="modal__close" id="modal-close-btn" aria-label="{{ t.modal_close_label }}">&times;</button>
     </div>
 
     <div class="modal__body">
@@ -22,22 +22,23 @@
           novalidate
         >
           {% csrf_token %}
+          <input type="hidden" name="lang" value="{{ lang|default:'uk' }}">
 
           <div class="form__group">
-            <label class="form__label" for="modal-lead-name">Ваше ім'я</label>
+            <label class="form__label" for="modal-lead-name">{{ t.form_name_label }}</label>
             <input
               class="form__input"
               type="text"
               id="modal-lead-name"
               name="name"
-              placeholder="Введіть ім'я"
+              placeholder="{{ t.form_name_placeholder }}"
               required
               autocomplete="given-name"
             >
           </div>
 
           <div class="form__group">
-            <label class="form__label" for="modal-lead-phone">Ваш телефон</label>
+            <label class="form__label" for="modal-lead-phone">{{ t.form_phone_label }}</label>
             <input
               class="form__input"
               type="tel"
@@ -51,16 +52,16 @@
           </div>
 
           <div class="form__group">
-            <span class="form__label" id="modal-interest-label">Що вас цікавить?</span>
+            <span class="form__label" id="modal-interest-label">{{ t.form_interest_label }}</span>
             <div class="form__radio-group" role="radiogroup" aria-labelledby="modal-interest-label">
               <label class="form__radio">
-                <input type="radio" name="interest" value="buy" id="modal-radio-buy" checked> Купити землю (Я учасник)
+                <input type="radio" name="interest" value="buy" id="modal-radio-buy" checked> {{ t.form_interest_towers }}
               </label>
               <label class="form__radio">
-                <input type="radio" name="interest" value="sell" id="modal-radio-sell"> Продати землю (Я власник)
+                <input type="radio" name="interest" value="sell" id="modal-radio-sell"> {{ t.form_interest_boilers }}
               </label>
               <label class="form__radio">
-                <input type="radio" name="interest" value="estimate"> Оцінка ділянки
+                <input type="radio" name="interest" value="estimate"> {{ t.form_interest_metal }}
               </label>
             </div>
           </div>

@@ -1,38 +1,10 @@
 /* =========================================
-   Mobile & iOS Safari Fixes
+   iOS Safari & Specific Mobile Fixes
    ======================================== */
-
-/* Safe area insets for notch/dynamic island */
-.header {
-  padding-inline: max(var(--container-pad), env(safe-area-inset-left))
-                  max(var(--container-pad), env(safe-area-inset-right));
-}
-
-.footer {
-  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
-}
-
-/* Fix 100vh on iOS (address bar reflow) */
-.hero {
-  min-height: 100svh;
-}
-
-@supports not (min-height: 100svh) {
-  .hero {
-    min-height: -webkit-fill-available;
-  }
-}
 
 /* Prevent iOS auto-zoom on input focus (font-size >= 16px) */
 .form__input {
   font-size: max(16px, var(--size-base));
-}
-
-/* iOS Safari scroll momentum */
-.nav--mobile {
-  -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
-  max-height: calc(100dvh - var(--header-h));
 }
 
 /* Tap highlight suppression */
@@ -44,14 +16,6 @@ button,
 
 /* ── Tablet (768–1023px) ── */
 @media (min-width: 768px) and (max-width: 1023px) {
-  :root {
-    --header-h: 72px;
-  }
-
-  .hero__title {
-    font-size: clamp(2rem, 5.5vw, 3rem);
-  }
-
   .about__grid {
     grid-template-columns: 1fr;
   }
@@ -71,10 +35,6 @@ button,
   .contact__inner {
     grid-template-columns: 1fr;
   }
-
-  .prozorro__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* ── Mobile: form submit button (avoid text overflow) ── */
@@ -85,73 +45,12 @@ button,
     padding-block: .75rem;
     line-height: 1.3;
   }
-
-  .header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative; /* For absolute positioning of logo */
-  }
-
-  .header__burger {
-    order: 1;
-    z-index: 10;
-  }
-
-  .header__logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    z-index: 5;
-  }
-
-  .header__actions {
-    order: 3;
-    z-index: 10;
-  }
-
-  .header__actions .btn--gold.btn--sm {
-    display: none; /* Hide the original header button on mobile */
-  }
-
-  .mobile-call-btn {
-    display: flex; /* Show FAB on mobile */
-    position: fixed;
-    bottom: 1.5rem;
-    left: 1.5rem;
-    z-index: 999;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    color: #fff;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-md);
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-/* ── Header call button on narrow mobile (e.g. 375px): smaller, shift left ── */
-@media (max-width: 480px) {
-  .header__actions .btn--gold.btn--sm {
-    padding-inline: calc(1.25rem - 0.3125rem);
-    margin-inline-end: 0.5rem;
-    font-size: 0.75rem;
-    width: 120px; /* Зменшуємо ширину кнопки */
-  }
 }
 
 /* ── Small mobile (< 375px) ── */
 @media (max-width: 374px) {
   :root {
     --container-pad: .875rem;
-  }
-
-  .hero__title {
-    font-size: 1.75rem;
   }
 
   .btn {
@@ -161,17 +60,6 @@ button,
 
   .stats__grid {
     grid-template-columns: 1fr;
-  }
-}
-
-/* ── Landscape on small phones ── */
-@media (max-height: 480px) and (orientation: landscape) {
-  .hero__inner {
-    padding-block: 3rem 2rem;
-  }
-
-  .hero__scroll {
-    display: none;
   }
 }
 

@@ -3,7 +3,7 @@
   <div class="container contact__inner">
 
     <div class="contact__info">
-      <span class="section-label" style="color:var(--color-accent-light)">Контакти</span>
+      <span class="section-label" style="color:var(--color-accent-light)">{{ t.section_contact }}</span>
       <h2 class="contact__info-title" id="contact-title">{{ contact.title }}</h2>
       <p class="contact__info-desc">{{ contact.description }}</p>
 
@@ -12,7 +12,7 @@
         <div class="contact__detail">
           <div class="contact__detail-icon" aria-hidden="true">{% icon "phone" %}</div>
           <div class="contact__detail-body">
-            <p class="contact__detail-label">Гаряча лінія</p>
+            <p class="contact__detail-label">{{ t.contact_hotline }}</p>
             <p class="contact__detail-value">
               <a href="tel:{{ site.phone }}">{{ site.phone }}</a>
             </p>
@@ -36,7 +36,7 @@
         <div class="contact__detail">
           <div class="contact__detail-icon" aria-hidden="true">{% icon "location" %}</div>
           <div class="contact__detail-body">
-            <p class="contact__detail-label">Адреса</p>
+            <p class="contact__detail-label">{{ t.contact_address }}</p>
             <p class="contact__detail-value">{{ site.address }}</p>
           </div>
         </div>
