@@ -13,7 +13,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: PYTHON_VERSION
-        value: 3.12.0
+        value: "3.12.0"
       - key: RENDER
         value: "true"
       - key: DISABLE_COLLECTSTATIC
