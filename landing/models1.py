@@ -104,7 +104,7 @@ class AboutSection(SingletonModel):
         return 'Про компанію'
 
 
-class AuctionSection(SingletonModel):
+class ProductionSection(SingletonModel):
     title = models.CharField(
         max_length=120, default='Наші можливості',
         verbose_name='Заголовок секції'
@@ -129,11 +129,11 @@ class AuctionSection(SingletonModel):
     )
 
     class Meta:
-        verbose_name = 'Секція «Що таке аукціон»'
-        verbose_name_plural = 'Секція «Що таке аукціон»'
+        verbose_name = 'Секція «Наші можливості»'
+        verbose_name_plural = 'Секція «Наші можливості»'
 
     def __str__(self):
-        return 'Що таке аукціон'
+        return 'Наші можливості'
 
 
 class ServiceItem(models.Model):

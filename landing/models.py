@@ -3,7 +3,7 @@ from .models1 import (
     SiteSettings,
     HeroSection,
     AboutSection,
-    AuctionSection,
+    ProductionSection,
     ServiceItem,
 )
 from .models2 import (
@@ -21,7 +21,7 @@ __all__ = [
     'SiteSettings',
     'HeroSection',
     'AboutSection',
-    'AuctionSection',
+    'ProductionSection',
     'ServiceItem',
     'WorkStep',
     'StatItem',

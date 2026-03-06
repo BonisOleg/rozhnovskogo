@@ -12,7 +12,7 @@ from django.views.generic import TemplateView
 
 logger = logging.getLogger(__name__)
 
-from .models1 import SiteSettings, HeroSection, AboutSection, AuctionSection, ServiceItem
+from .models1 import SiteSettings, HeroSection, AboutSection, ProductionSection, ServiceItem
 from .models2 import (
     WorkStep, StatItem, AdvantageItem, AdvantagesSection,
     ServicesSection, ContactSection, LeadSubmission,
@@ -34,7 +34,7 @@ def _get_context():
         'site': SiteSettings.load(),
         'hero': HeroSection.load(),
         'about': AboutSection.load(),
-        'auction': AuctionSection.load(),
+        'auction': ProductionSection.load(),
         'services_section': ServicesSection.load(),
         'service_items': ServiceItem.objects.all(),
         'steps': WorkStep.objects.all(),

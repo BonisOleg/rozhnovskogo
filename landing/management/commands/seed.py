@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from landing.models1 import SiteSettings, HeroSection, AboutSection, AuctionSection, ServiceItem
+from landing.models1 import SiteSettings, HeroSection, AboutSection, ProductionSection, ServiceItem
 from landing.models2 import (
     WorkStep, StatItem, AdvantageItem, AdvantagesSection,
     ServicesSection, ContactSection,
@@ -50,7 +50,7 @@ class Command(BaseCommand):
         obj.save()
 
     def _seed_auction(self):
-        obj = AuctionSection.load()
+        obj = ProductionSection.load()
         obj.title = 'Наші можливості'
         obj.platform_title = 'Сертифіковане виробництво'
         obj.platform_text = (

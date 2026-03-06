@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models1 import SiteSettings, HeroSection, AboutSection, AuctionSection, ServiceItem
+from .models1 import SiteSettings, HeroSection, AboutSection, ProductionSection, ServiceItem
 
 
 class SingletonAdmin(admin.ModelAdmin):
@@ -68,8 +68,8 @@ class AboutSectionAdmin(SingletonAdmin):
     )
 
 
-@admin.register(AuctionSection)
-class AuctionSectionAdmin(SingletonAdmin):
+@admin.register(ProductionSection)
+class ProductionSectionAdmin(SingletonAdmin):
     fieldsets = (
         ('Загальне', {
             'fields': ('title', 'platform_title', 'platform_text'),
