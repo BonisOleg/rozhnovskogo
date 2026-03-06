@@ -68,17 +68,18 @@ class AdvantageItem(models.Model):
 class AdvantagesSection(SingletonModel):
     title = models.CharField(
         max_length=120,
-        default='Чому обирають ПП «Укркотлобуд»?',
+        default='Чому обирають наші башти Рожновського?',
         verbose_name='Заголовок секції'
     )
     subtitle = models.CharField(
         max_length=200,
-        default='Ми гарантуємо надійність нашого обладнання та високу якість виконання робіт.',
+        default='Власне виробництво, монтаж під ключ та ціни без посередників по всій Україні.',
         verbose_name='Підзаголовок'
     )
     footer_quote = models.TextField(
         default=(
-            'Ціни від виробника та повний спектр послуг — від проектування до монтажу по всій Україні.'
+            'Від розрахунку до здачі об\'єкту — ми беремо на себе все. '
+            'Доставка та монтаж башт Рожновського у будь-який куточок України.'
         ),
         verbose_name='Цитата внизу блоку'
     )
@@ -93,7 +94,7 @@ class AdvantagesSection(SingletonModel):
 
 class ServicesSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='Наша продукція',
+        max_length=120, default='Наша продукція та послуги',
         verbose_name='Заголовок секції'
     )
     steps_title = models.CharField(
@@ -113,11 +114,11 @@ class ServicesSection(SingletonModel):
 class ContactSection(SingletonModel):
     title = models.CharField(
         max_length=120,
-        default='Маєте запитання? Зв\'яжіться з нами!',
+        default='Замовити башту Рожновського',
         verbose_name='Заголовок'
     )
     description = models.TextField(
-        default='Наші фахівці допоможуть підібрати обладнання, розрахувати вартість та нададуть професійну консультацію.',
+        default='Наші фахівці розрахують вартість башти, підберуть оптимальний об\'єм та нададуть консультацію щодо монтажу.',
         verbose_name='Опис'
     )
     form_title = models.CharField(

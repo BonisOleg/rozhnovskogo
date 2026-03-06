@@ -36,7 +36,7 @@ class SiteSettings(SingletonModel):
     viber_url = models.URLField(blank=True, verbose_name='Viber')
     whatsapp_url = models.URLField(blank=True, verbose_name='WhatsApp')
     call_btn_text = models.CharField(
-        max_length=60, default='Замовити дзвінок',
+        max_length=60, default='Замовити башту',
         verbose_name='Текст кнопки дзвінка'
     )
 
@@ -50,15 +50,15 @@ class SiteSettings(SingletonModel):
 
 class HeroSection(SingletonModel):
     title = models.CharField(
-        max_length=120, default='ПП «УКРКОТЛОБУД» — ВАШ НАДІЙНИЙ ПАРТНЕР У СФЕРІ ОПАЛЕННЯ',
+        max_length=120, default='ВОДОНАПІРНІ БАШТИ РОЖНОВСЬКОГО — ВІД ВИРОБНИКА',
         verbose_name='Заголовок'
     )
     subtitle = models.TextField(
-        default='Виробництво промислових котлів, водонапірних башт Рожновського та металоконструкцій будь-якої складності. Якість, перевірена часом.',
+        default='Виготовляємо сталеві водонапірні башти 15, 25, 50 м³. Монтаж під ключ, доставка по всій Україні. Гарантія та сертифікати.',
         verbose_name='Підзаголовок'
     )
     btn_buy_text = models.CharField(
-        max_length=60, default='КАТАЛОГ ПРОДУКЦІЇ',
+        max_length=60, default='ЗАМОВИТИ БАШТУ',
         verbose_name='Кнопка «Купити»'
     )
     btn_sell_text = models.CharField(
@@ -89,7 +89,7 @@ class AboutSection(SingletonModel):
     )
     philosophy_title = models.CharField(
         max_length=160,
-        default='Надійність, якість та індивідуальний підхід',
+        default='Надійний виробник башт Рожновського з 20-річним досвідом',
         verbose_name='Заголовок філософії'
     )
     philosophy_text = models.TextField(
