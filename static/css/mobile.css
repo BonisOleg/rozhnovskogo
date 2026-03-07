@@ -14,6 +14,24 @@ button,
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ── Topbar responsive ── */
+@media (max-width: 480px) {
+  :root {
+    --topbar-h: 52px;
+  }
+
+  .topbar__inner {
+    flex-direction: column;
+    gap: .2rem;
+    justify-content: center;
+    padding-block: .25rem;
+  }
+
+  .topbar__phones {
+    gap: .75rem;
+  }
+}
+
 /* ── Tablet (768–1023px) ── */
 @media (min-width: 768px) and (max-width: 1023px) {
   .about__grid {

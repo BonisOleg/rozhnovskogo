@@ -1,4 +1,18 @@
 {% load static icons %}
+<div class="topbar" role="banner" aria-label="Наші контакти">
+  <div class="topbar__inner">
+    <span class="topbar__label">НАШІ КОНТАКТИ:</span>
+    <div class="topbar__phones">
+      {% if site.phone %}
+        <a href="tel:{{ site.phone }}" class="topbar__phone">{{ site.phone }}</a>
+      {% endif %}
+      {% if site.phone2 %}
+        <a href="tel:{{ site.phone2 }}" class="topbar__phone">{{ site.phone2 }}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
 <header class="header" id="site-header">
   <div class="container header__inner">
 
@@ -52,6 +66,9 @@
   <div class="nav--mobile__actions">
     {% if site.phone %}
       <a href="tel:{{ site.phone }}" class="header__phone" style="color:#fff">{{ site.phone }}</a>
+    {% endif %}
+    {% if site.phone2 %}
+      <a href="tel:{{ site.phone2 }}" class="header__phone" style="color:#fff">{{ site.phone2 }}</a>
     {% endif %}
   </div>
 </nav>

@@ -11,14 +11,67 @@
 }
 
 /* =========================================
+   Topbar — contacts strip
+   ======================================== */
+.topbar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 101;
+  height: var(--topbar-h);
+  background: var(--color-accent);
+  color: #fff;
+  padding-top: env(safe-area-inset-top);
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.75rem, 3vw, 2rem);
+  height: 100%;
+  padding-inline: var(--container-pad);
+  flex-wrap: wrap;
+}
+
+.topbar__label {
+  font-size: clamp(.75rem, 2vw, .9rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.topbar__phones {
+  display: flex;
+  align-items: center;
+  gap: clamp(.75rem, 3vw, 1.75rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.topbar__phone {
+  font-size: clamp(.875rem, 2.5vw, 1.1rem);
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  transition: opacity var(--transition);
+}
+
+.topbar__phone:hover {
+  opacity: .8;
+}
+
+/* =========================================
    Header
    ======================================== */
 .header {
   position: fixed;
-  inset-block-start: 0;
+  inset-block-start: var(--topbar-h);
   inset-inline: 0;
   z-index: 100;
-  height: var(--header-h);
+  height: var(--header-bar-h);
   background: rgba(0, 31, 63, 0.97);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -406,6 +459,19 @@
   transition: all var(--transition);
   touch-action: manipulation;
   font-weight: 500;
+}
+
+.footer__phones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .25rem;
+}
+
+@media (max-width: 1023px) {
+  .footer__phones {
+    align-items: center;
+  }
 }
 
 .footer__credit-link:hover,

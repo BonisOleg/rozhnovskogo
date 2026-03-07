@@ -31,8 +31,13 @@
         {{ t.footer_credit }} <a href="#" class="footer__credit-link">Ваша студія</a>
       </p>
     </div>
-    {% if site.phone %}
-      <a href="tel:{{ site.phone }}" class="footer__nav-link">{{ site.phone }}</a>
-    {% endif %}
+    <div class="footer__phones">
+      {% if site.phone %}
+        <a href="tel:{{ site.phone }}" class="footer__nav-link">{{ site.phone }}</a>
+      {% endif %}
+      {% if site.phone2 %}
+        <a href="tel:{{ site.phone2 }}" class="footer__nav-link">{{ site.phone2 }}</a>
+      {% endif %}
+    </div>
   </div>
 </footer>

@@ -42,7 +42,9 @@
   --container: 1200px;
   --container-pad: clamp(1rem, 4vw, 2rem);
 
-  --header-h: 80px;
+  --topbar-h: 44px;
+  --header-bar-h: 80px;
+  --header-h: calc(var(--topbar-h) + var(--header-bar-h));
 }
 
 *,

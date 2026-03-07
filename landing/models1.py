@@ -24,6 +24,10 @@ class SiteSettings(SingletonModel):
         max_length=30, default='+380 00 000 00 00',
         verbose_name='Телефон'
     )
+    phone2 = models.CharField(
+        max_length=30, blank=True, default='',
+        verbose_name='Телефон 2'
+    )
     email = models.EmailField(
         default='info@example.com',
         verbose_name='Email'
@@ -54,7 +58,7 @@ class HeroSection(SingletonModel):
         verbose_name='Заголовок'
     )
     subtitle = models.TextField(
-        default='Виготовляємо сталеві водонапірні башти 15, 25, 50 м³. Монтаж під ключ, доставка по всій Україні. Гарантія та сертифікати.',
+        default='Виготовляємо сталеві водонапірні башти від 10 до 200 м³. Монтаж під ключ, доставка по всій Україні. Гарантія та сертифікати.',
         verbose_name='Підзаголовок'
     )
     btn_buy_text = models.CharField(
