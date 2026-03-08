@@ -192,13 +192,13 @@
 
   function openPhoneModal() {
     if (!phoneModal) return;
-    phoneModal.classList.add('open');
+    phoneModal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
 
   function closePhoneModal() {
     if (!phoneModal) return;
-    phoneModal.classList.remove('open');
+    phoneModal.classList.remove('is-open');
     document.body.style.overflow = '';
   }
 
@@ -220,7 +220,7 @@
   }
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && phoneModal && phoneModal.classList.contains('open')) {
+    if (e.key === 'Escape' && phoneModal && phoneModal.classList.contains('is-open')) {
       closePhoneModal();
     }
   });

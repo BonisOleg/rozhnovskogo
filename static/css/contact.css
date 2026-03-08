@@ -370,3 +370,29 @@
     flex-wrap: wrap;
   }
 }
+
+/* Phone modal specific styles */
+.phone-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.phone-modal-btn {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  transition: background var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+.phone-modal-btn:hover {
+  background: var(--color-border);
+}
