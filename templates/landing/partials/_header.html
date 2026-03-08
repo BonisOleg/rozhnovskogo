@@ -32,7 +32,7 @@
         {% if site.logo %}
           <img src="{{ site.logo.url }}" alt="Логотип" class="header__logo-img" width="210" height="196">
         {% else %}
-          <div class="header__logo-placeholder">ЛОГОТИП</div>
+          <img src="{% static 'images/logoline.webp' %}" alt="Логотип" class="header__logo-img" width="200" height="55">
         {% endif %}
       </a>
 

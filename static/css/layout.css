@@ -99,9 +99,7 @@
   align-items: center;
   gap: .75rem;
   text-decoration: none;
-  background: #fff;
-  border-radius: 8px;
-  padding: 4px 8px;
+  padding: 4px 0;
 }
 
 .header__logo-img {
