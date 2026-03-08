@@ -15,6 +15,29 @@ button,
 }
 
 /* ── Topbar responsive ── */
+.topbar__mobile-hint {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .topbar {
+    cursor: pointer;
+  }
+
+  .topbar__phones {
+    display: none;
+  }
+
+  .topbar__mobile-hint {
+    display: block;
+    font-size: var(--size-xs);
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+}
+
 @media (max-width: 480px) {
   :root {
     --topbar-h: 52px;
@@ -25,10 +48,6 @@ button,
     gap: .2rem;
     justify-content: center;
     padding-block: .25rem;
-  }
-
-  .topbar__phones {
-    gap: .75rem;
   }
 }
 

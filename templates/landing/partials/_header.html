@@ -1,5 +1,5 @@
 {% load static icons %}
-<div class="topbar" role="banner" aria-label="Наші контакти">
+<div class="topbar" role="banner" aria-label="Наші контакти" data-modal-target="phone-modal">
   <div class="topbar__inner">
     <span class="topbar__label">НАШІ КОНТАКТИ:</span>
     <div class="topbar__phones">
@@ -9,6 +9,9 @@
       {% if site.phone2 %}
         <a href="tel:{{ site.phone2 }}" class="topbar__phone">{{ site.phone2 }}</a>
       {% endif %}
+    </div>
+    <div class="topbar__mobile-hint">
+      Натисніть, щоб зателефонувати
     </div>
   </div>
 </div>
