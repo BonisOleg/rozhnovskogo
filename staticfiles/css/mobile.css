@@ -15,20 +15,40 @@ button,
 }
 
 /* ── Topbar responsive ── */
-@media (max-width: 480px) {
-  :root {
-    --topbar-h: 52px;
+@media (max-width: 767px) {
+  .topbar {
+    cursor: pointer;
+    height: auto;
+    min-height: var(--topbar-h);
   }
 
   .topbar__inner {
     flex-direction: column;
-    gap: .2rem;
-    justify-content: center;
-    padding-block: .25rem;
+    gap: 4px;
+    padding-block: 6px;
   }
 
   .topbar__phones {
-    gap: .75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .topbar__phone {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .topbar__label {
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --topbar-h: 56px;
   }
 }
 

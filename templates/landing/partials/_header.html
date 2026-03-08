@@ -4,14 +4,11 @@
     <span class="topbar__label">НАШІ КОНТАКТИ:</span>
     <div class="topbar__phones">
       {% if site.phone %}
-        <a href="tel:{{ site.phone }}" class="topbar__phone">{{ site.phone }}</a>
+        <span class="topbar__phone">{{ site.phone }}</span>
       {% endif %}
       {% if site.phone2 %}
-        <a href="tel:{{ site.phone2 }}" class="topbar__phone">{{ site.phone2 }}</a>
+        <span class="topbar__phone">{{ site.phone2 }}</span>
       {% endif %}
-    </div>
-    <div class="topbar__mobile-hint">
-      Натисніть, щоб зателефонувати
     </div>
   </div>
 </div>
