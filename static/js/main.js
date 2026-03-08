@@ -142,8 +142,8 @@
   var modalCloseBtn = document.getElementById('modal-close-btn');
 
   var MODAL_TITLES = {
-    buy: 'Хочу купити землю',
-    sell: 'Хочу продати землю'
+    buy: 'Замовити продукцію',
+    sell: 'Отримати консультацію'
   };
 
   function openModal(interest) {
@@ -183,6 +183,45 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('is-open')) {
       closeModal();
+    }
+  });
+
+  /* ── Phone modal ── */
+  var phoneModal = document.getElementById('phone-modal');
+  var phoneModalCloseBtn = document.getElementById('phone-modal-close-btn');
+
+  function openPhoneModal() {
+    if (!phoneModal) return;
+    phoneModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePhoneModal() {
+    if (!phoneModal) return;
+    phoneModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-modal-target="phone-modal"]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openPhoneModal();
+    });
+  });
+
+  if (phoneModalCloseBtn) {
+    phoneModalCloseBtn.addEventListener('click', closePhoneModal);
+  }
+
+  if (phoneModal) {
+    phoneModal.addEventListener('click', function (e) {
+      if (e.target === phoneModal) closePhoneModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && phoneModal && phoneModal.classList.contains('open')) {
+      closePhoneModal();
     }
   });
 

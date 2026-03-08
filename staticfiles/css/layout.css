@@ -413,6 +413,11 @@
   font-size: var(--size-sm);
   color: rgba(255,255,255,.7);
   transition: color var(--transition);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .footer__nav-link:hover {
@@ -469,6 +474,26 @@
 @media (max-width: 1023px) {
   .footer__phones {
     align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer__phones {
+    gap: .5rem;
+  }
+  
+  .footer__phone-link {
+    font-size: var(--size-xs);
+    padding: .25rem .5rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    color: rgba(255,255,255,.7);
+    cursor: pointer;
+    font-family: inherit;
   }
 }
 
