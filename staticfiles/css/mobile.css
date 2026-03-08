@@ -1,0 +1,104 @@
+/* =========================================
+   iOS Safari & Specific Mobile Fixes
+   ======================================== */
+
+/* Prevent iOS auto-zoom on input focus (font-size >= 16px) */
+.form__input {
+  font-size: max(16px, var(--size-base));
+}
+
+/* Tap highlight suppression */
+a,
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Topbar responsive ── */
+@media (max-width: 480px) {
+  :root {
+    --topbar-h: 52px;
+  }
+
+  .topbar__inner {
+    flex-direction: column;
+    gap: .2rem;
+    justify-content: center;
+    padding-block: .25rem;
+  }
+
+  .topbar__phones {
+    gap: .75rem;
+  }
+}
+
+/* ── Tablet (768–1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advantages__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mobile: form submit button (avoid text overflow) ── */
+@media (max-width: 767px) {
+  .form__submit {
+    font-size: clamp(0.75rem, 3.5vw, .9rem);
+    white-space: normal;
+    padding-block: .75rem;
+    line-height: 1.3;
+  }
+}
+
+/* ── Small mobile (< 375px) ── */
+@media (max-width: 374px) {
+  :root {
+    --container-pad: .875rem;
+  }
+
+  .btn {
+    padding: .75rem 1.25rem;
+    font-size: .9rem;
+  }
+
+  .stats__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Focus-visible outlines for keyboard nav ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

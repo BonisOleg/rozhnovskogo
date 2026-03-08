@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ lang|default:'uk' }}">
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -13,7 +14,6 @@
 
   <link rel="icon" type="image/webp" href="{% static 'images/favicon.webp' %}">
 
-  {% load static %}
   <link rel="preload" as="image" href="{% static 'images/desk.webp' %}" fetchpriority="high" media="(min-width: 769px)">
   <link rel="preload" as="image" href="{% static 'images/mob.webp' %}" fetchpriority="high" media="(max-width: 768px)">
   <link rel="preload" as="style" href="{% static 'css/base.css' %}">
