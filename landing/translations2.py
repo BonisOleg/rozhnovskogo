@@ -51,7 +51,7 @@ _RU_T_BASE = {
     'form_phone_label': 'Ваш телефон',
     'form_interest_label': 'Что вас интересует?',
     'form_interest_towers': 'Водонапорные башни',
-    'form_interest_boilers': 'Котлы и отопление',
+    'form_interest_boilers': 'Котли и отопление',
     'form_interest_metal': 'Металлоконструкции',
     'faq_label': 'Ответы на вопросы',
     'faq_title': 'Часто задаваемые вопросы (FAQ)',

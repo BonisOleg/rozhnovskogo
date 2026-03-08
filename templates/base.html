@@ -11,6 +11,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="{% if lang == 'ru' %}ru_UA{% else %}uk_UA{% endif %}">
 
+  <link rel="icon" type="image/webp" href="{% static 'images/favicon.webp' %}">
+
   {% load static %}
   <link rel="preload" as="image" href="{% static 'images/desk.webp' %}" fetchpriority="high" media="(min-width: 769px)">
   <link rel="preload" as="image" href="{% static 'images/mob.webp' %}" fetchpriority="high" media="(max-width: 768px)">
