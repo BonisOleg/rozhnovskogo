@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  {% if lang == 'ru' %}
+    Спасибо за заявку | {{ t.meta_title }}
+  {% else %}
+    Дякуємо за заявку | {{ t.meta_title }}
+  {% endif %}
+{% endblock %}
+
+{% block meta_description %}
+  {% if lang == 'ru' %}
+    Заявка получена. Наш эксперт свяжется с вами в ближайшее время.
+  {% else %}
+    Заявку отримано. Наш експерт зв'яжеться з вами найближчим часом.
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+<main class="thank-you-container">
+  <div class="thank-you-content">
+    <div class="thank-you-icon" aria-hidden="true">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="40" fill="var(--color-primary-light)"/>
+        <path d="M32 42L37 47L50 34" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+
+    <h1 class="thank-you-title">
+      {% if lang == 'ru' %}
+        Спасибо за заявку!
+      {% else %}
+        Дякуємо за заявку!
+      {% endif %}
+    </h1>
+
+    <p class="thank-you-subtitle">
+      {% if lang == 'ru' %}
+        Ваша заявка успешно отправлена
+      {% else %}
+        Ваша заявка успішно відправлена
+      {% endif %}
+    </p>
+
+    <div class="thank-you-text">
+      {% if lang == 'ru' %}
+        <p>Наш эксперт свяжется с вами в ближайшее время по номеру <strong>{{ site.phone }}</strong></p>
+        <p>Спасибо за обращение к ПП «Укркотлобуд». Мы ценим ваше доверие и готовы помочь!</p>
+      {% else %}
+        <p>Наш експерт зв'яжеться з вами найближчим часом за номером <strong>{{ site.phone }}</strong></p>
+        <p>Дякуємо за звернення до ПП «Укркотлобуд». Ми цінуємо вашу довіру та готові допомогти!</p>
+      {% endif %}
+    </div>
+
+    <div class="thank-you-actions">
+      <a href="/" class="btn btn-primary">
+        {% if lang == 'ru' %}
+          Вернуться на сайт
+        {% else %}
+          Повернутися на сайт
+        {% endif %}
+      </a>
+    </div>
+
+    <div class="thank-you-contacts">
+      <div class="contact-item">
+        <span class="contact-label">
+          {% if lang == 'ru' %}
+            Телефон:
+          {% else %}
+            Телефон:
+          {% endif %}
+        </span>
+        <a href="tel:{{ site.phone|safe }}" class="contact-value">{{ site.phone }}</a>
+        {% if site.phone2 %}
+          <a href="tel:{{ site.phone2|safe }}" class="contact-value">{{ site.phone2 }}</a>
+        {% endif %}
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">
+          {% if lang == 'ru' %}
+            Email:
+          {% else %}
+            Email:
+          {% endif %}
+        </span>
+        <a href="mailto:{{ site.email }}" class="contact-value">{{ site.email }}</a>
+      </div>
+
+      {% if site.address %}
+        <div class="contact-item">
+          <span class="contact-label">
+            {% if lang == 'ru' %}
+              Адрес:
+            {% else %}
+              Адреса:
+            {% endif %}
+          </span>
+          <p class="contact-value">{{ site.address }}</p>
+        </div>
+      {% endif %}
+
+      <div class="contact-item">
+        <span class="contact-label">
+          {% if lang == 'ru' %}
+            Мессенджеры:
+          {% else %}
+            Месенджери:
+          {% endif %}
+        </span>
+        <div class="contact-messengers">
+          {% if site.telegram_url %}
+            <a href="{{ site.telegram_url }}" target="_blank" rel="noopener" class="messenger-link" aria-label="Telegram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 11.5l-2.5 11.5s-.5.5-1 .5c-.5 0-1-.5-1-1v-3l-3 2s-.5 0-1 0c-.5 0-.5-.5-.5-1l9-10s1-1 1 0z"/>
+              </svg>
+            </a>
+          {% endif %}
+          {% if site.viber_url %}
+            <a href="{{ site.viber_url }}" target="_blank" rel="noopener" class="messenger-link" aria-label="Viber">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+              </svg>
+            </a>
+          {% endif %}
+          {% if site.whatsapp_url %}
+            <a href="{{ site.whatsapp_url }}" target="_blank" rel="noopener" class="messenger-link" aria-label="WhatsApp">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm-7 0c0 .83-.67 1.5-1.5 1.5S5 11.33 5 10.5 5.67 9 6.5 9 8 9.67 8 10.5z"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,399 @@
+/* ========================================
+   Thank You Page Styles
+   ======================================== */
+
+.thank-you-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--size-base) var(--container-pad);
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-white) 100%);
+  padding-top: max(var(--size-base), env(safe-area-inset-top));
+  padding-bottom: max(var(--size-base), env(safe-area-inset-bottom));
+  padding-left: max(var(--container-pad), env(safe-area-inset-left));
+  padding-right: max(var(--container-pad), env(safe-area-inset-right));
+}
+
+.thank-you-content {
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thank-you-icon {
+  margin-bottom: var(--size-2xl);
+  display: inline-block;
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.thank-you-icon svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 8px 16px rgba(0, 31, 63, 0.1));
+}
+
+.thank-you-title {
+  font-size: var(--size-4xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--size-base);
+  line-height: 1.2;
+}
+
+.thank-you-subtitle {
+  font-size: var(--size-lg);
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--size-xl);
+}
+
+.thank-you-text {
+  font-size: var(--size-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--size-2xl);
+  animation: fadeIn 0.8s ease-in 0.3s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.thank-you-text p {
+  margin-bottom: var(--size-base);
+}
+
+.thank-you-text p:last-child {
+  margin-bottom: 0;
+}
+
+.thank-you-text strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.thank-you-actions {
+  margin-bottom: var(--size-2xl);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--size-md) var(--size-2xl);
+  border-radius: var(--radius-lg);
+  font-size: var(--size-base);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg-white);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.thank-you-contacts {
+  padding: var(--size-xl);
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  text-align: left;
+  animation: fadeIn 0.8s ease-in 0.5s both;
+}
+
+.contact-item {
+  margin-bottom: var(--size-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-sm);
+}
+
+.contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-label {
+  font-size: var(--size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-value {
+  font-size: var(--size-base);
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition);
+  word-break: break-word;
+}
+
+.contact-value:hover {
+  color: var(--color-accent);
+}
+
+.contact-messengers {
+  display: flex;
+  gap: var(--size-base);
+  flex-wrap: wrap;
+}
+
+.messenger-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary-light);
+  color: var(--color-bg-white);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.messenger-link:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.messenger-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========================================
+   Tablet (768px and below)
+   ======================================== */
+@media (max-width: 768px) {
+  .thank-you-container {
+    padding: var(--size-lg) var(--container-pad);
+  }
+
+  .thank-you-content {
+    max-width: 100%;
+  }
+
+  .thank-you-icon svg {
+    width: 70px;
+    height: 70px;
+  }
+
+  .thank-you-title {
+    font-size: var(--size-3xl);
+  }
+
+  .thank-you-subtitle {
+    font-size: var(--size-md);
+  }
+
+  .btn {
+    padding: var(--size-base) var(--size-xl);
+    font-size: var(--size-sm);
+  }
+
+  .thank-you-contacts {
+    padding: var(--size-base);
+  }
+
+  .contact-item {
+    margin-bottom: var(--size-base);
+    gap: var(--size-xs);
+  }
+
+  .messenger-link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .messenger-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ========================================
+   Mobile (480px and below)
+   ======================================== */
+@media (max-width: 480px) {
+  .thank-you-container {
+    padding: var(--size-base) var(--size-base);
+    min-height: auto;
+    padding-top: max(var(--size-base), env(safe-area-inset-top));
+    padding-bottom: max(var(--size-base), env(safe-area-inset-bottom));
+    padding-left: max(var(--size-base), env(safe-area-inset-left));
+    padding-right: max(var(--size-base), env(safe-area-inset-right));
+  }
+
+  .thank-you-content {
+    padding: var(--size-lg) 0;
+  }
+
+  .thank-you-icon {
+    margin-bottom: var(--size-xl);
+  }
+
+  .thank-you-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .thank-you-title {
+    font-size: var(--size-2xl);
+    margin-bottom: var(--size-sm);
+  }
+
+  .thank-you-subtitle {
+    font-size: var(--size-base);
+    margin-bottom: var(--size-lg);
+  }
+
+  .thank-you-text {
+    font-size: var(--size-sm);
+    margin-bottom: var(--size-lg);
+  }
+
+  .thank-you-actions {
+    margin-bottom: var(--size-lg);
+  }
+
+  .btn {
+    width: 100%;
+    padding: var(--size-base);
+  }
+
+  .thank-you-contacts {
+    padding: var(--size-base);
+  }
+
+  .contact-item {
+    margin-bottom: var(--size-sm);
+  }
+
+  .contact-label {
+    font-size: var(--size-xs);
+  }
+
+  .contact-value {
+    font-size: var(--size-sm);
+  }
+
+  .contact-messengers {
+    gap: var(--size-sm);
+  }
+
+  .messenger-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .messenger-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ========================================
+   iOS Safari specific adjustments
+   ======================================== */
+@supports (padding: max(0px)) {
+  .thank-you-container {
+    padding-top: max(var(--size-base), env(safe-area-inset-top));
+    padding-bottom: max(var(--size-base), env(safe-area-inset-bottom));
+    padding-left: max(var(--container-pad), env(safe-area-inset-left));
+    padding-right: max(var(--container-pad), env(safe-area-inset-right));
+  }
+
+  .btn {
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .contact-value,
+  .messenger-link {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ========================================
+   Dark mode support (if implemented)
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  .thank-you-container {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  }
+
+  .thank-you-contacts {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+  }
+
+  .contact-label {
+    color: var(--color-text-light);
+  }
+
+  .contact-value {
+    color: var(--color-accent-light);
+  }
+}
+
+/* ========================================
+   Print styles
+   ======================================== */
+@media print {
+  .thank-you-container {
+    min-height: auto;
+    background: white;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .thank-you-actions {
+    display: none;
+  }
+}

@@ -1,7 +1,8 @@
 import logging
 from types import SimpleNamespace
 
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -77,8 +78,20 @@ class LeadFormView(View):
         if name and phone:
             LeadSubmission.objects.create(name=name, phone=phone, interest=interest)
 
-        contact = ContactSection.load()
-        return render(request, 'landing/htmx/lead_success.html', {
-            'contact': contact,
-            'lang': lang,
-        })
+        if request.headers.get('HX-Request'):
+            response = HttpResponse(status=204)
+            response['HX-Redirect'] = '/thank-you/'
+            return response
+
+        return redirect('landing:thank_you')
+
+
+class ThankYouView(TemplateView):
+    template_name = 'landing/thank_you.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx.update(_get_context())
+        kw_param = self.request.GET.get('kw', '').strip()
+        _apply_translation(ctx, kw_param)
+        return ctx
