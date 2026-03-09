@@ -2,139 +2,158 @@
 {% load static %}
 
 {% block title %}
-  {% if lang == 'ru' %}
-    Спасибо за заявку | {{ t.meta_title }}
-  {% else %}
-    Дякуємо за заявку | {{ t.meta_title }}
-  {% endif %}
+  {% if lang == 'ru' %}Спасибо за заявку | Башни Рожновского{% else %}Дякуємо за заявку | Башти Рожновського{% endif %}
 {% endblock %}
 
 {% block meta_description %}
-  {% if lang == 'ru' %}
-    Заявка получена. Наш эксперт свяжется с вами в ближайшее время.
-  {% else %}
-    Заявку отримано. Наш експерт зв'яжеться з вами найближчим часом.
-  {% endif %}
+  {% if lang == 'ru' %}Заявка получена. Наш эксперт свяжется с вами в ближайшее время.{% else %}Заявку отримано. Наш експерт зв'яжеться з вами найближчим часом.{% endif %}
 {% endblock %}
 
 {% block body %}
-<main class="thank-you-container">
-  <div class="thank-you-content">
-    <div class="thank-you-icon" aria-hidden="true">
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-        <circle cx="40" cy="40" r="40" fill="var(--color-primary-light)"/>
-        <path d="M32 42L37 47L50 34" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<div class="thank-you-page">
+
+  <!-- Hero -->
+  <div class="thank-you-hero">
+    <div class="thank-you-check" aria-hidden="true">
+      <svg viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="20" fill="#001f3f" opacity="0.08"/>
+        <path d="M12 23L19 30L32 15" stroke="#001f3f" stroke-width="3.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
 
-    <h1 class="thank-you-title">
-      {% if lang == 'ru' %}
-        Спасибо за заявку!
-      {% else %}
-        Дякуємо за заявку!
-      {% endif %}
+    <h1 class="thank-you-hero-title">
+      {% if lang == 'ru' %}Спасибо за заявку!{% else %}Дякуємо за заявку!{% endif %}
     </h1>
-
-    <p class="thank-you-subtitle">
-      {% if lang == 'ru' %}
-        Ваша заявка успешно отправлена
-      {% else %}
-        Ваша заявка успішно відправлена
-      {% endif %}
+    <p class="thank-you-hero-sub">
+      {% if lang == 'ru' %}Ваша заявка успешно отправлена{% else %}Ваша заявка успішно відправлена{% endif %}
     </p>
+  </div>
 
-    <div class="thank-you-text">
+  <!-- Wave divider -->
+  <div class="thank-you-wave">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
+  <!-- Body -->
+  <div class="thank-you-body">
+
+    <div class="thank-you-message">
       {% if lang == 'ru' %}
         <p>Наш эксперт свяжется с вами в ближайшее время по номеру <strong>{{ site.phone }}</strong></p>
-        <p>Спасибо за обращение к ПП «Укркотлобуд». Мы ценим ваше доверие и готовы помочь!</p>
+        <p>Спасибо за обращение к ПП «Укркотлобуд». Мы ценим ваше доверие!</p>
       {% else %}
         <p>Наш експерт зв'яжеться з вами найближчим часом за номером <strong>{{ site.phone }}</strong></p>
-        <p>Дякуємо за звернення до ПП «Укркотлобуд». Ми цінуємо вашу довіру та готові допомогти!</p>
+        <p>Дякуємо за звернення до ПП «Укркотлобуд». Ми цінуємо вашу довіру!</p>
       {% endif %}
     </div>
 
-    <div class="thank-you-actions">
-      <a href="/" class="btn btn-primary">
-        {% if lang == 'ru' %}
-          Вернуться на сайт
-        {% else %}
-          Повернутися на сайт
-        {% endif %}
+    <div class="thank-you-cta">
+      <a href="/" class="thank-you-btn">
+        {% if lang == 'ru' %}← Вернуться на сайт{% else %}← Повернутися на сайт{% endif %}
       </a>
     </div>
 
-    <div class="thank-you-contacts">
-      <div class="contact-item">
-        <span class="contact-label">
-          {% if lang == 'ru' %}
-            Телефон:
-          {% else %}
-            Телефон:
+    <!-- Contacts card -->
+    <div class="thank-you-card">
+      <p class="thank-you-card-title">
+        {% if lang == 'ru' %}Контакты{% else %}Контакти{% endif %}
+      </p>
+
+      <!-- Phone -->
+      <div class="ty-contact-row">
+        <div class="ty-contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+          </svg>
+        </div>
+        <div class="ty-contact-info">
+          <span class="ty-contact-label">{% if lang == 'ru' %}Телефон{% else %}Телефон{% endif %}</span>
+          <a href="tel:{{ site.phone|safe }}" class="ty-contact-value">{{ site.phone }}</a>
+          {% if site.phone2 %}
+            <a href="tel:{{ site.phone2|safe }}" class="ty-contact-value">{{ site.phone2 }}</a>
           {% endif %}
-        </span>
-        <a href="tel:{{ site.phone|safe }}" class="contact-value">{{ site.phone }}</a>
-        {% if site.phone2 %}
-          <a href="tel:{{ site.phone2|safe }}" class="contact-value">{{ site.phone2 }}</a>
-        {% endif %}
+        </div>
       </div>
 
-      <div class="contact-item">
-        <span class="contact-label">
-          {% if lang == 'ru' %}
-            Email:
-          {% else %}
-            Email:
-          {% endif %}
-        </span>
-        <a href="mailto:{{ site.email }}" class="contact-value">{{ site.email }}</a>
+      <!-- Email -->
+      <div class="ty-contact-row">
+        <div class="ty-contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <div class="ty-contact-info">
+          <span class="ty-contact-label">Email</span>
+          <a href="mailto:{{ site.email }}" class="ty-contact-value">{{ site.email }}</a>
+        </div>
       </div>
 
       {% if site.address %}
-        <div class="contact-item">
-          <span class="contact-label">
-            {% if lang == 'ru' %}
-              Адрес:
-            {% else %}
-              Адреса:
-            {% endif %}
-          </span>
-          <p class="contact-value">{{ site.address }}</p>
+      <!-- Address -->
+      <div class="ty-contact-row">
+        <div class="ty-contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
         </div>
-      {% endif %}
-
-      <div class="contact-item">
-        <span class="contact-label">
-          {% if lang == 'ru' %}
-            Мессенджеры:
-          {% else %}
-            Месенджери:
-          {% endif %}
-        </span>
-        <div class="contact-messengers">
-          {% if site.telegram_url %}
-            <a href="{{ site.telegram_url }}" target="_blank" rel="noopener" class="messenger-link" aria-label="Telegram">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 11.5l-2.5 11.5s-.5.5-1 .5c-.5 0-1-.5-1-1v-3l-3 2s-.5 0-1 0c-.5 0-.5-.5-.5-1l9-10s1-1 1 0z"/>
-              </svg>
-            </a>
-          {% endif %}
-          {% if site.viber_url %}
-            <a href="{{ site.viber_url }}" target="_blank" rel="noopener" class="messenger-link" aria-label="Viber">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
-              </svg>
-            </a>
-          {% endif %}
-          {% if site.whatsapp_url %}
-            <a href="{{ site.whatsapp_url }}" target="_blank" rel="noopener" class="messenger-link" aria-label="WhatsApp">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm-7 0c0 .83-.67 1.5-1.5 1.5S5 11.33 5 10.5 5.67 9 6.5 9 8 9.67 8 10.5z"/>
-              </svg>
-            </a>
-          {% endif %}
+        <div class="ty-contact-info">
+          <span class="ty-contact-label">{% if lang == 'ru' %}Адрес{% else %}Адреса{% endif %}</span>
+          <p class="ty-contact-value">{{ site.address }}</p>
         </div>
       </div>
+      {% endif %}
+
+      <!-- Messengers -->
+      {% if site.telegram_url or site.viber_url or site.whatsapp_url %}
+      <div class="ty-contact-row">
+        <div class="ty-contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </div>
+        <div class="ty-contact-info">
+          <span class="ty-contact-label">{% if lang == 'ru' %}Мессенджеры{% else %}Месенджери{% endif %}</span>
+          <div class="ty-messengers">
+            {% if site.telegram_url %}
+              <a href="{{ site.telegram_url }}" target="_blank" rel="noopener"
+                 class="ty-messenger-btn ty-messenger-btn--tg" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if site.viber_url %}
+              <a href="{{ site.viber_url }}" target="_blank" rel="noopener"
+                 class="ty-messenger-btn ty-messenger-btn--vb" aria-label="Viber">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 1C6.5 1 2 5.1 2 10.1c0 2.8 1.3 5.3 3.4 7v3.4l3.2-1.8c1.1.3 2.2.5 3.4.5 5.5 0 10-4.1 10-9.1S17.5 1 12 1zm1 12.5l-2.5-2.7-4.8 2.7 5.3-5.6 2.5 2.7 4.8-2.7-5.3 5.6z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if site.whatsapp_url %}
+              <a href="{{ site.whatsapp_url }}" target="_blank" rel="noopener"
+                 class="ty-messenger-btn ty-messenger-btn--wa" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.527 5.855L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.372l-.36-.214-3.73.978.995-3.638-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
     </div>
   </div>
-</main>
+
+  <!-- Footer -->
+  <div class="thank-you-footer">
+    ПП «Укркотлобуд» — Водонапірні башти Рожновського
+  </div>
+
+</div>
 {% endblock %}
