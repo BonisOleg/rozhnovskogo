@@ -264,7 +264,7 @@
 .parallax-section {
   position: relative;
   background-color: transparent;
-  clip-path: inset(0);
+  clip-path: inset(calc(-1 * var(--header-h)) 0 0 0);
 }
 
 .parallax-section::before {
